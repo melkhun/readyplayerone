@@ -1,0 +1,41 @@
+{% extends 'base.html' %}
+
+{% load static %}
+{% block content %}
+<!-- {% comment %} 
+<a class="btn btn-outline-dark">View Existing Projects </a>
+sample button
+{% endcomment %} -->
+
+<!-- chart js import -->
+<script src="https://cdn.jsdelivr.net/npm/chart.js@2.8.0"></script>
+
+<canvas id="myChart"></canvas>
+
+<div style="position:absolute; left:20px; bottom: 20px">
+    <img src="{% static "pictures/team_logo.jpg" %}" alt="Team Logo" width="100px">
+</div>
+
+<script>
+var ctx = document.getElementById('myChart').getContext('2d');
+var chart = new Chart(ctx, {
+    // The type of chart we want to create
+    type: 'bar',
+
+    // The data for our dataset
+    data: {
+        labels: ['January', 'February', 'March', 'April', 'May', 'June', 'July'],
+        datasets: [{
+            label: 'Sample Dataset',
+            backgroundColor: 'rgb(255, 99, 132)',
+            borderColor: 'rgb(255, 99, 132)',
+            data: [0, 10, 5, 2, 20, 30, 45]
+        }]
+    },
+
+    // Configuration options go here
+    options: {}
+});
+</script>
+
+{% endblock content %}
