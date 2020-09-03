@@ -130,6 +130,6 @@ def networthcalculator(request):
     }
     return render(request, 'app/calculators/networth_calculator.html', context)
 
-# @login_required(login_url='login')
+@login_required(login_url='login')
 def quickstart(request):
     return render(request, 'quickstart.html')

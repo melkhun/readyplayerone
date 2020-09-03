@@ -8,47 +8,73 @@
         <v-container fluid>
 
                 <v-card flat>
-                  <v-card-text v-if="!quickRes">
-                    <h2>Investment Quick Start</h2>
+                  <v-card-text v-if="!quickRes" class="text-center">
+                    <span class="text-blue"><h1><b>Investment Quick Start</b></h1></span>
                     <p>Want to invest but don’t know what or how?<br>Fill up your profile and we will recommend you something that is just right for you!</p>
                     <v-form v-model="valid">
-                    <p>My name is
-                      <v-text-field
-                        v-model="name"
-                        label="Mary"
-                        required
-                        solo
-                      ></v-text-field>
-                      and I am
-                      <v-text-field
-                        v-model="age"
-                        label="20"
-                        required
-                        solo
-                      ></v-text-field>
-                      years old
-                    </p>
-                    <v-card-title>Risk Appetite</v-card-title>
-                    <v-select
-                      :items="risk"
-                      label="Low"
-                      solo
-                    ></v-select>
-                    <v-card-title>Time Horizon</v-card-title>
-                    <v-slider
-                      v-model="slider"
-                      thumb-label
-                    ></v-slider>
-                    <v-card-title>How much are you ready to invest?</v-card-title>
+                      <div class="profile">
+                        <v-col sm="4" md="3">
+                          My name is
+                        </v-col>
+                        <v-col sm="4" md="3">
+                            <v-text-field
+                              class="input-field"
+                              v-model="name"
+                              color="rgb(172, 193, 252)"
+                              label="Input your name"
+                              required
+                              regular
+                            ></v-text-field>
+                          </v-col>
+                          <v-col sm="4" md="3">
+                            and I am
+                          </v-col>
+                          <v-col sm="4" md="3">
+                            <v-text-field
+                              class="input-field"
+                              v-model="age"
+                              color="rgb(172, 193, 252)"
+                              label="Input your age"
+                              required
+                              regular
+                            ></v-text-field>
+                          </v-col>
+                          <v-col sm="4" md="3">
+                            years old
+                          </v-col>
+                        </div>
+
+                    <v-card-title><span class="text-blue">Risk Appetite</span></v-card-title>
+                    <v-select class="input-field" v-model="risk">
+                      <option v-for="option in riskLevels" :value="option"></option>
+                    </v-select>
+                    <v-card 
+                      color="transparent"
+                      elevation=0
+                      max-width=800> 
+                      <v-card-title><span class="text-blue">Time Horizon (Years)</span></v-card-title>
+                      <v-slider
+                        v-model="slider"
+                        color="rgb(172, 193, 252)"
+                        thumb-label="always"
+                        step="10"
+                      ></v-slider>
+                    </v-card>
+                    <v-card-title><span class="text-blue">How much are you ready to invest?</span></v-card-title>
                     <v-text-field
+                      class="input-field"
                       v-model="amount"
-                      label="10000"
+                      label="Enter an amount"
                       required
-                      solo
+                      regular
                     ></v-text-field>
                     <v-btn
-                      color="success"
+                      class="white--text"
+                      color="rgb(0, 0, 255)"
+                      min-width=300
+                      min-height=50
                       class="mr-4"
+                      x-large
                       @click="handleSubmit"
                     >
                     SHOW MY RESULTS
@@ -119,12 +145,14 @@
   </div>
 
   {% endblock content %}
-
+   <!----------------- VUE APP --------------------->
   <script>
     new Vue({
       el: '#app',
+      vuetify: new Vuetify(),
       data: {
-        quickRes: false
+        quickRes: false,
+        riskLevels: ["Low", "Medium", "High"],
       },
       methods: {
         handleSubmit() {
@@ -135,6 +163,32 @@
           this.quickRes = false
         }
       },
-      vuetify: new Vuetify(),
     })
   </script>
+
+<style scoped lang="scss">
+  .text-blue {
+    color:rgb(0, 102, 255);
+    font-size: 300;
+  }
+  
+  .input-field {
+    width: 200px;
+    color: rgb(172, 193, 252);
+  }
+  
+  .profile {
+      display: flex;
+      justify-content: space-between;
+  }
+  
+  .mr-4 {
+      display: flex;
+      justify-content: space-between;
+  }
+  
+  .transparent {
+     background-color: transparent!important;
+     border-color: transparent!important;
+   }
+  </style> 
