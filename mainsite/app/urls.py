@@ -9,6 +9,13 @@ urlpatterns = [
     path('', views.index, name='index'),
 ]
 
+# account paths
+urlpatterns += [
+    path('login', views.loginPage, name='login'),
+    path('logout', views.logoutUser, name='logout'),
+    path('register', views.register, name='register')
+]
+
 # sidebar paths
 urlpatterns += [
     path('maindashboard', views.maindashboard, name='maindashboard'),
