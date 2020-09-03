@@ -21,6 +21,12 @@
   <!-- Custom styles for this template-->
   <link href="{% static 'css/sb-admin-2.min.css' %}" rel="stylesheet">
   <script src="https://cdn.plot.ly/plotly-latest.min.js"></script>
+
+  <link href="https://fonts.googleapis.com/css?family=Roboto:100,300,400,500,700,900" rel="stylesheet">
+  <link href="https://cdn.jsdelivr.net/npm/@mdi/font@5.x/css/materialdesignicons.min.css" rel="stylesheet">
+  <link href="https://cdn.jsdelivr.net/npm/vuetify@2.x/dist/vuetify.min.css" rel="stylesheet">
+  <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1, user-scalable=no, minimal-ui">
+
 </head>
 
 <body id="page-top">
@@ -38,8 +44,125 @@
       <!-- Main Content -->
       <div id="content">
 
+
+        <div id="app" >
+          <v-app>
+            <v-main>
+              <v-container fluid>
+
+                <v-card flat>
+                  <v-tabs
+                    background-color="white"
+                    color="deep-purple accent-4"
+                    right
+                  >
+                    <v-tab>Calculator</v-tab>
+                    <v-tab @click="resetQS">Quick Start</v-tab>
+                    <v-tab>My Portfolio</v-tab>
+              
+                    <v-tab-item>
+                      <v-card flat>
+                        <v-card-text>hi ben</v-card-text>
+                      </v-card>
+                    </v-tab-item>
+                    <v-tab-item>
+                      <v-card flat>
+                        <v-card-text v-if="!quickRes">
+                          <h2>Investment Quick Start</h2>
+                          <p>Want to invest but don’t know what or how?<br>Fill up your profile and we will recommend you something that is just right for you!</p>
+                          <v-form v-model="valid">
+                          <p>My name is
+                            <v-text-field
+                              v-model="name"
+                              label="Mary"
+                              required
+                              solo
+                            ></v-text-field>
+                            and I am
+                            <v-text-field
+                              v-model="age"
+                              label="20"
+                              required
+                              solo
+                            ></v-text-field>
+                            years old
+                          </p>
+                          <v-card-title>Risk Appetite</v-card-title>
+                          <v-select
+                            :items="risk"
+                            label="Low"
+                            solo
+                          ></v-select>
+                          <v-card-title>Time Horizon</v-card-title>
+                          <v-slider
+                            v-model="slider"
+                            thumb-label
+                          ></v-slider>
+                          <v-card-title>How much are you ready to invest?</v-card-title>
+                          <v-text-field
+                            v-model="amount"
+                            label="10000"
+                            required
+                            solo
+                          ></v-text-field>
+                          <v-btn
+                            color="success"
+                            class="mr-4"
+                            @click="handleSubmit"
+                          >
+                          SHOW MY RESULTS
+                          </v-btn>
+                          </v-form>
+                        </v-card-text>
+                        
+                        <v-card-text v-else>
+                          <h2>Based on your profile, we recommend the following investments classes.</h2>
+  
+
+                          <v-tabs
+                          background-color="white"
+                          color="deep-purple accent-4"
+                          centered
+                        >
+                          <v-tab>Real Estate</v-tab>
+                          <v-tab>Bonds</v-tab>
+                          <v-tab>ETFs</v-tab>
+                    
+                          <v-tab-item>
+                            <v-card flat>
+                              <v-card-text>
+                                <h5>REIT</h5>
+                                <p>A REIT is a corporation, trust, or association that invests directly in income-producing real estate and is traded like a stock.
+                                </p>
+                                <h2>Top Performing</h2>
+                                <p>Top gainers often continue to soar and reach new highs when their fundamentals are strong. The page lets you see top gaining stocks at a quick glance.                                </p>
+                              </v-card-text>
+                            </v-card>
+                          </v-tab-item> 
+
+                
+                        </v-card-text>
+
+                      </v-card>
+                    </v-tab-item>  
+                    <v-tab-item>
+                      <v-card flat>
+                        <v-card-text>3</v-card-text>
+                      </v-card>
+                    </v-tab-item>  
+                  </v-tabs>
+                </v-card>
+               
+              </v-container>
+            </v-main>
+          </v-app>
+        </div>
+
+      
         <!-- Topbar -->
+        {% comment %}
         {% include 'partials/_topbar.html' %}
+        {% endcomment %}
         <!-- End of Topbar -->
 
         <!-- Begin Page Content -->
@@ -50,11 +173,13 @@
             <h1 class="h3 mb-0 text-gray-800">Dashboard</h1>
             <a href="#" class="d-none d-sm-inline-block btn btn-sm btn-primary shadow-sm"><i class="fas fa-download fa-sm text-white-50"></i> Generate Report</a>
           </div> -->
-          <div>
+          <div class="row">
             {% block content %}
             {% endblock %}
           </div>
         </div>
+
+        
 
       </div>
       <!-- End of Main Content -->
@@ -87,7 +212,7 @@
         <div class="modal-body">Select "Logout" below if you are ready to end your current session.</div>
         <div class="modal-footer">
           <button class="btn btn-secondary" type="button" data-dismiss="modal">Cancel</button>
-          <a class="btn btn-primary" href="{% url 'logout' %}">Logout</a>
+          <a class="btn btn-primary" href="login.html">Logout</a>
         </div>
       </div>
     </div>
@@ -109,6 +234,28 @@
   <!-- Page level custom scripts -->
   <script src="{% static 'js/demo/chart-area-demo.js' %}"></script>
   <script src="{% static 'js/demo/chart-pie-demo.js' %}"></script>
+
+  
+  <script src="https://cdn.jsdelivr.net/npm/vue@2.x/dist/vue.js"></script>
+  <script src="https://cdn.jsdelivr.net/npm/vuetify@2.x/dist/vuetify.js"></script>
+  <script>
+    new Vue({
+      el: '#app',
+      data: {
+        quickRes: false
+      },
+      methods: {
+        handleSubmit() {
+          this.quickRes = true
+          console.log(this.name)
+        },
+        resetQS() {
+          this.quickRes = false
+        }
+      },
+      vuetify: new Vuetify(),
+    })
+  </script>
 
 </body>
 
