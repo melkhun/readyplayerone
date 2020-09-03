@@ -1,0 +1,140 @@
+{% extends 'base.html' %}
+{% load static %}
+{% block content %}
+
+<div id="app" >
+    <v-app>
+      <v-main>
+        <v-container fluid>
+
+                <v-card flat>
+                  <v-card-text v-if="!quickRes">
+                    <h2>Investment Quick Start</h2>
+                    <p>Want to invest but don’t know what or how?<br>Fill up your profile and we will recommend you something that is just right for you!</p>
+                    <v-form v-model="valid">
+                    <p>My name is
+                      <v-text-field
+                        v-model="name"
+                        label="Mary"
+                        required
+                        solo
+                      ></v-text-field>
+                      and I am
+                      <v-text-field
+                        v-model="age"
+                        label="20"
+                        required
+                        solo
+                      ></v-text-field>
+                      years old
+                    </p>
+                    <v-card-title>Risk Appetite</v-card-title>
+                    <v-select
+                      :items="risk"
+                      label="Low"
+                      solo
+                    ></v-select>
+                    <v-card-title>Time Horizon</v-card-title>
+                    <v-slider
+                      v-model="slider"
+                      thumb-label
+                    ></v-slider>
+                    <v-card-title>How much are you ready to invest?</v-card-title>
+                    <v-text-field
+                      v-model="amount"
+                      label="10000"
+                      required
+                      solo
+                    ></v-text-field>
+                    <v-btn
+                      color="success"
+                      class="mr-4"
+                      @click="handleSubmit"
+                    >
+                    SHOW MY RESULTS
+                    </v-btn>
+                    </v-form>
+                  </v-card-text>
+                  
+                  <v-card-text v-else>
+                    <h2>Based on your profile, we recommend the following investments classes.</h2>
+
+
+                    <v-tabs
+                    background-color="white"
+                    color="deep-purple accent-4"
+                    centered
+                  >
+                    <v-tab>Real Estate</v-tab>
+                    <v-tab>Bonds</v-tab>
+                    <v-tab>ETFs</v-tab>
+              
+                    <v-tab-item>
+                      <v-card flat>
+                        <v-card-text>
+                          <h5>REIT</h5>
+                          <p>A REIT is a corporation, trust, or association that invests directly in income-producing real estate and is traded like a stock.
+                          </p>
+                          <h2>Top Performing</h2>
+                          <p>Top gainers often continue to soar and reach new highs when their fundamentals are strong. The page lets you see top gaining stocks at a quick glance.                                </p>
+                        </v-card-text>
+                      </v-card>
+                    </v-tab-item>
+
+                    <v-tab-item>
+                        <v-card flat>
+                          <v-card-text>
+                            <h5>2</h5>
+                            <p>A REIT is a corporation, trust, or association that invests directly in income-producing real estate and is traded like a stock.
+                            </p>
+                            <h2>Top Performing</h2>
+                            <p>Top gainers often continue to soar and reach new highs when their fundamentals are strong. The page lets you see top gaining stocks at a quick glance.                                </p>
+                          </v-card-text>
+                        </v-card>
+                      </v-tab-item> 
+
+                      <v-tab-item>
+                        <v-card flat>
+                          <v-card-text>
+                            <h5>3</h5>
+                            <p>A REIT is a corporation, trust, or association that invests directly in income-producing real estate and is traded like a stock.
+                            </p>
+                            <h2>Top Performing</h2>
+                            <p>Top gainers often continue to soar and reach new highs when their fundamentals are strong. The page lets you see top gaining stocks at a quick glance.                                </p>
+                          </v-card-text>
+                        </v-card>
+                      </v-tab-item> 
+                    </v-tabs>
+
+          
+                  </v-card-text>
+
+                </v-card>
+
+          </v-card>
+         
+        </v-container>
+      </v-main>
+    </v-app>
+  </div>
+
+  {% endblock content %}
+
+  <script>
+    new Vue({
+      el: '#app',
+      data: {
+        quickRes: false
+      },
+      methods: {
+        handleSubmit() {
+          this.quickRes = true
+          console.log(this.name)
+        },
+        resetQS() {
+          this.quickRes = false
+        }
+      },
+      vuetify: new Vuetify(),
+    })
+  </script>

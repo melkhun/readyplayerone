@@ -123,11 +123,17 @@
   
   <script src="https://cdn.jsdelivr.net/npm/vue@2.x/dist/vue.js"></script>
   <script src="https://cdn.jsdelivr.net/npm/vuetify@2.x/dist/vuetify.js"></script>
+  
+  
+
+  <!----------------- VUE APP --------------------->
   <script>
     new Vue({
       el: '#app',
+      vuetify: new Vuetify(),
       data: {
-        quickRes: false
+        quickRes: false,
+        riskLevels: ["Low", "Medium", "High"],
       },
       methods: {
         handleSubmit() {
@@ -138,10 +144,38 @@
           this.quickRes = false
         }
       },
-      vuetify: new Vuetify(),
+      
     })
   </script>
 
 </body>
 
 </html>
+
+
+<style scoped lang="scss">
+.text-blue {
+  color:rgb(0, 102, 255);
+  font-size: 300;
+}
+
+.input-field {
+  width: 200px;
+  color: rgb(172, 193, 252);
+}
+
+.profile {
+    display: flex;
+    justify-content: space-between;
+}
+
+.mr-4 {
+    display: flex;
+    justify-content: space-between;
+}
+
+.transparent {
+   background-color: transparent!important;
+   border-color: transparent!important;
+ }
+</style>
