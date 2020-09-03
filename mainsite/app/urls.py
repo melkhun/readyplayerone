@@ -27,3 +27,7 @@ urlpatterns += [
     path('financialcalculators/budget', views.budgetcalculator, name='budgetcalculator'),
     path('financialcalculators/networth', views.networthcalculator, name='networthcalculator'),
 ]
+
+urlpatterns += [
+    path('quickstart', views.quickstart, name='quickstart'),
+]
