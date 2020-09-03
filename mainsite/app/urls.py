@@ -9,8 +9,14 @@ urlpatterns = [
     path('', views.index, name='index'),
 ]
 
-# navbar paths
+# sidebar paths
 urlpatterns += [
-    path('maindashboard', views.maindashboard, name='maindashboard')
+    path('maindashboard', views.maindashboard, name='maindashboard'),
+    path('financialcalculators', views.financialcalculators, name='financialcalculators')
 ]
 
+# calculator paths
+urlpatterns += [
+    path('financialcalculators/budget', views.budgetcalculator, name='budgetcalculator'),
+    path('financialcalculators/networth', views.networthcalculator, name='networthcalculator'),
+]
