@@ -1,0 +1,101 @@
+{% extends 'base.html' %}
+{% block content %}
+
+<div class="row justify-content-center">
+    {% load static %}
+    <img src="{% static 'img/default_profile_picture.jpg' %}" style="max-width:200px;">
+</div>
+<div class="row justify-content-center" style="margin-left:-120px;">
+    <table>
+        <form method="POST">{% csrf_token %}
+        <tr>
+            <td>
+                Username:
+            </td>
+            <td>
+                <input type="text" name='username' value="{{user.username}}">
+            </td>
+        </tr><tr>
+            <td>
+                Age:
+            </td>
+            <td>
+                {% if user.userprofile.age %}
+                <input type="number" name='age' value="{{user.userprofile.age}}">
+                {% else %}
+                <input type="number" name='age' placeholder="E.g. 23">
+                {% endif %}
+            </td>
+        </tr>
+        
+        <tr>
+            <td>
+                Salary:
+            </td>
+            <td>
+                {% if user.userprofile.salary %}
+                <input type="number" name='salary' value="{{user.userprofile.salary}}">
+                {% else %}
+                <input type="number" name='salary' placeholder="E.g. 3000">
+                {% endif %} 
+            </td>
+        </tr><tr>
+            <td>
+                Capital:
+            </td>
+            <td>
+                {% if user.userprofile.capital %}
+                <input type="number" name='capital' value="{{user.userprofile.capital}}">
+                {% else %}
+                <input type="number" name='capital' placeholder="E.g. 2852">
+                {% endif %}     
+            </td>
+        </tr> 
+        <tr>
+            <td></td><td>
+                <input type="submit" value="Save">
+            </td>
+        </tr>
+    </form>   
+    </table>
+</div>
+
+<!-- Time Horizon: 
+    
+Risk Appetite: -->
+
+<style>
+    
+.row{
+    padding-bottom:20px;
+}
+
+input{
+    width: 155px;
+    height: 40px;
+    line-height: 40px;
+    padding: 0 10px 0 15px;
+    border: 1px solid #ccc;
+    float: left;
+    border-radius: 5px;
+    color: #003870;
+    font-weight: 500;
+    font-size: 16px;
+    
+}
+
+input::-webkit-outer-spin-button,
+input::-webkit-inner-spin-button {
+  -webkit-appearance: none;
+  margin: 0;
+}
+
+tr, td{
+    padding-left: 20px;
+}
+td {
+    padding-bottom: 10px;
+}
+</style>
+
+{% endblock %}
