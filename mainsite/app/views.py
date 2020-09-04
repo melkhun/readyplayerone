@@ -39,6 +39,14 @@ def maindashboard(request):
     return render(request, 'app/main_dashboard.html', context)
 
 
+
+@login_required(login_url='login')
+def testdashboard(request):
+    context = {}
+    return render(request, 'app/test_dashboard.html', context)
+
+
+
 # accounts views
 from django.contrib.auth.forms import UserCreationForm
 from django.shortcuts import redirect

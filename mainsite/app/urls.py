@@ -3,6 +3,7 @@ from . import views
 
 # importing dash app to pre-render
 from .dash_apps.finished_apps import sample_dash_app
+from .dash_apps.finished_apps import prices_app
 
 # index path
 urlpatterns = [
@@ -20,6 +21,7 @@ urlpatterns += [
 # sidebar paths
 urlpatterns += [
     path('maindashboard', views.maindashboard, name='maindashboard'),
+    path('testdashboard', views.testdashboard, name='testdashboard'),
     path('financialcalculators', views.financialcalculators, name='financialcalculators')
 ]
 
