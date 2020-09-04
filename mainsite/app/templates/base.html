@@ -74,6 +74,7 @@
                     <v-btn href="{% url 'financialcalculators' %}">Calculator</v-btn>
                     <v-btn href="{% url 'quickstart' %}">Quick Start</v-btn>
                     <v-btn href="{% url 'quickstart' %}">My Portfolio</v-btn>
+                    <v-btn href="#" data-toggle="modal" data-target="#logoutModal">Logout</v-btn>
                   </v-btn-toggle>
                   </v-toolbar>
                   {% block content %}
@@ -116,8 +117,8 @@
         </div>
         <div class="modal-body">Select "Logout" below if you are ready to end your current session.</div>
         <div class="modal-footer">
-          <button class="btn btn-secondary" type="button" data-dismiss="modal">Cancel</button>
-          <a class="btn btn-primary" href="login.html">Logout</a>
+          <button class="btn btn-secondary" style="color:white;" type="button" data-dismiss="modal">Cancel</button>
+          <a class="btn btn-primary" href="{% url 'logout' %}">Logout</a>
         </div>
       </div>
     </div>
