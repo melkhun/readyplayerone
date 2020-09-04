@@ -4,13 +4,9 @@ import plotly.graph_objects as go
 
 from django.contrib.auth.decorators import login_required
 
-from .forms import UserProfileForm
-from .models import UserProfile
-
 # Create your views here.
 @login_required(login_url='login')
 def index(request):
-    UserProfile.objects.get_or_create(user=request.user)
     return render(request, 'index.html')
 
 @login_required(login_url='login')
@@ -79,19 +75,6 @@ def register(request):
         'form': form
         }
     return render(request, 'app/accounts/register.html', context)
-
-
-@login_required(login_url='login')
-def profile(request):
-    if request.method == "POST":
-        user = request.user
-        user.username = request.POST['username']
-        user.userprofile.age = request.POST['age']
-        user.userprofile.salary = request.POST['salary']
-        user.userprofile.capital = request.POST['capital']
-        user.save()
-    context = {}
-    return render(request, 'app/accounts/profile.html', context)
 
 # calculator views
 @login_required(login_url='login')
