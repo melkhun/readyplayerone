@@ -3,15 +3,15 @@ import dash
 import dash_core_components as dcc
 import dash_html_components as html
 from django_plotly_dash import DjangoDash
-from yahoo_fin import stock_info
+# from yahoo_fin import stock_info
 from datetime import date, timedelta
-import requests
+# import requests
 
-import colorlover as cl
+# import colorlover as cl
 import datetime as dt
 import flask
 import os
-import pandas as pd
+# import pandas as pd
 import time
 
 API_URL = 'https://www.alphavantage.co/query'
@@ -21,11 +21,11 @@ external_stylesheets = ['https://codepen.io/chriddyp/pen/bWLwgP.css']
 
 app = DjangoDash('TestGraph', external_stylesheets=external_stylesheets)
 
-colorscale = cl.scales['9']['qual']['Paired']
+# colorscale = cl.scales['9']['qual']['Paired']
 
 
 # for sameple bc i lazy find actual list and read from it for now
-listOfTickers = stock_info.tickers_dow()
+# listOfTickers = stock_info.tickers_dow()
 
 # topGainers = stock_info.get_day_gainers()
 # print(topGainers)
@@ -46,8 +46,8 @@ app.layout = html.Div([
     ]),
     dcc.Dropdown(
         id='stock-ticker-input',
-        options=[{'label': listOfTickers[i], 'value': listOfTickers[i]}
-                 for i in range(len(listOfTickers))],
+        # options=[{'label': listOfTickers[i], 'value': listOfTickers[i]}
+                #  for i in range(len(listOfTickers))],
         value=['MSFT', 'AAPL'],
         multi=True
     ),
@@ -76,12 +76,12 @@ def update_graph(tickers):
     else:
         enddate = date.today()
 
-        allDates = pd.date_range(start='07/01/2020', end=enddate, closed=None)
+        # allDates = pd.date_range(start='07/01/2020', end=enddate, closed=None)
         allDates.format(formatter=lambda x: x.strftime('%m/%d/%Y'))
         
         for i, ticker in enumerate(tickers):
             dff = {}
-            dff = stock_info.get_data(ticker, start_date='01/01/2020', end_date=enddate)
+            # dff = stock_info.get_data(ticker, start_date='01/01/2020', end_date=enddate)
 
             # req_data = { "function": "TIME_SERIES_DAILY", 
             #             "symbol": ticker,

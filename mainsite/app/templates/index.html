@@ -3,9 +3,18 @@
 {% load static %}
 {% block content %}
 
-<h1>Hello, {{request.user}}.</h1>
-<!-- <div style="position:absolute; left:20px; bottom: 20px">
-    <img src="{% static 'img/team_logo.jpg' %}" alt="Team Logo" width="100px">
-</div> -->
+<div class="animation-area">
+    <h1 class="welcome-text">Hello, {{request.user|title}}.</h1>
+    <ul class="box-area">
+        <li></li>
+        <li></li>
+        <li></li>
+        <li></li>
+        <li></li>
+        <li></li>
+    </ul>
+</div>
+
+
 
 {% endblock content %}
