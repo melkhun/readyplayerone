@@ -2,193 +2,96 @@
 {% load static %}
 {% block content %}
 
-<div id="app" >
-    <v-app>
-      <v-main>
-        <v-container fluid>
-
-                <v-card flat>
-                  <v-card-text v-if="!quickRes" class="text-center">
-                    <span class="text-blue"><h1><b>Investment Quick Start</b></h1></span>
-                    <p>Want to invest but don’t know what or how?<br>Fill up your profile and we will recommend you something that is just right for you!</p>
-                    <v-form v-model="valid">
-                      <div class="profile">
-                        <v-col sm="4" md="3">
-                          My name is
-                        </v-col>
-                        <v-col sm="4" md="3">
-                            <v-text-field
-                              class="input-field"
-                              v-model="name"
-                              color="rgb(172, 193, 252)"
-                              label="Input your name"
-                              required
-                              regular
-                            ></v-text-field>
-                          </v-col>
-                          <v-col sm="4" md="3">
-                            and I am
-                          </v-col>
-                          <v-col sm="4" md="3">
-                            <v-text-field
-                              class="input-field"
-                              v-model="age"
-                              color="rgb(172, 193, 252)"
-                              label="Input your age"
-                              required
-                              regular
-                            ></v-text-field>
-                          </v-col>
-                          <v-col sm="4" md="3">
-                            years old
-                          </v-col>
-                        </div>
-
-                    <v-card-title><span class="text-blue">Risk Appetite</span></v-card-title>
-                    <v-select class="input-field" v-model="risk">
-                      <option v-for="option in riskLevels" :value="option"></option>
-                    </v-select>
-                    <v-card 
-                      color="transparent"
-                      elevation=0
-                      max-width=800> 
-                      <v-card-title><span class="text-blue">Time Horizon (Years)</span></v-card-title>
-                      <v-slider
-                        v-model="slider"
-                        color="rgb(172, 193, 252)"
-                        thumb-label="always"
-                        step="10"
-                      ></v-slider>
-                    </v-card>
-                    <v-card-title><span class="text-blue">How much are you ready to invest?</span></v-card-title>
-                    <v-text-field
-                      class="input-field"
-                      v-model="amount"
-                      label="Enter an amount"
-                      required
-                      regular
-                    ></v-text-field>
-                    <v-btn
-                      class="white--text"
-                      color="rgb(0, 0, 255)"
-                      min-width=300
-                      min-height=50
-                      class="mr-4"
-                      x-large
-                      @click="handleSubmit"
-                    >
-                    SHOW MY RESULTS
-                    </v-btn>
-                    </v-form>
-                  </v-card-text>
-                  
-                  <v-card-text v-else>
-                    <h2>Based on your profile, we recommend the following investments classes.</h2>
-
-
-                    <v-tabs
-                    background-color="white"
-                    color="deep-purple accent-4"
-                    centered
-                  >
-                    <v-tab>Real Estate</v-tab>
-                    <v-tab>Bonds</v-tab>
-                    <v-tab>ETFs</v-tab>
-              
-                    <v-tab-item>
-                      <v-card flat>
-                        <v-card-text>
-                          <h5>REIT</h5>
-                          <p>A REIT is a corporation, trust, or association that invests directly in income-producing real estate and is traded like a stock.
-                          </p>
-                          <h2>Top Performing</h2>
-                          <p>Top gainers often continue to soar and reach new highs when their fundamentals are strong. The page lets you see top gaining stocks at a quick glance.                                </p>
-                        </v-card-text>
-                      </v-card>
-                    </v-tab-item>
-
-                    <v-tab-item>
-                        <v-card flat>
-                          <v-card-text>
-                            <h5>2</h5>
-                            <p>A REIT is a corporation, trust, or association that invests directly in income-producing real estate and is traded like a stock.
-                            </p>
-                            <h2>Top Performing</h2>
-                            <p>Top gainers often continue to soar and reach new highs when their fundamentals are strong. The page lets you see top gaining stocks at a quick glance.                                </p>
-                          </v-card-text>
-                        </v-card>
-                      </v-tab-item> 
-
-                      <v-tab-item>
-                        <v-card flat>
-                          <v-card-text>
-                            <h5>3</h5>
-                            <p>A REIT is a corporation, trust, or association that invests directly in income-producing real estate and is traded like a stock.
-                            </p>
-                            <h2>Top Performing</h2>
-                            <p>Top gainers often continue to soar and reach new highs when their fundamentals are strong. The page lets you see top gaining stocks at a quick glance.                                </p>
-                          </v-card-text>
-                        </v-card>
-                      </v-tab-item> 
-                    </v-tabs>
-
-          
-                  </v-card-text>
-
-                </v-card>
-
-          </v-card>
-         
-        </v-container>
-      </v-main>
-    </v-app>
-  </div>
-
-  {% endblock content %}
-   <!----------------- VUE APP --------------------->
-  <script>
-    new Vue({
-      el: '#app',
-      vuetify: new Vuetify(),
-      data: {
-        quickRes: false,
-        riskLevels: ["Low", "Medium", "High"],
-      },
-      methods: {
-        handleSubmit() {
-          this.quickRes = true
-          console.log(this.name)
-        },
-        resetQS() {
-          this.quickRes = false
-        }
-      },
-    })
-  </script>
-
-<style scoped lang="scss">
-  .text-blue {
-    color:rgb(0, 102, 255);
-    font-size: 300;
-  }
+<v-card flat>
+  <v-card-text v-if="!quickRes" class="text-center">
+    <span class="text-blue"><h1><b>Investment Quick Start</b></h1></span>
+    <p>Want to invest but don’t know what or how?<br>Fill up your profile and we will recommend you something that is just right for you!</p>
+    <v-form v-model="valid">
+      <div class="profile">
+        <b-container fluid>
+          <v-col sm="3">
+          My name is
+        </v-col>
+        <v-col sm="3">
+            <v-text-field
+              class="input-field"
+              v-model="name"
+              color="rgb(172, 193, 252)"
+              label="Input your name"
+              required
+              regular
+            ></v-text-field>
+        </v-col>
+        <v-col sm="3">
+            and I am
+          </v-col>
+            <v-text-field
+              class="input-field"
+              v-model="age"
+              color="rgb(172, 193, 252)"
+              label="Input your age"
+              required
+              regular
+            ></v-text-field>
+        </v-col>
+        <v-col sm="3">
+            years old.
+          </v-col>
+        </b-container>
+        </div>
+      
+    <v-card-title><span class="text-blue">Risk Appetite</span></v-card-title>
+    <v-select class="input-field" :items="riskLevels" v-model="risk"></v-select>
+    <v-card 
+      color="transparent"
+      elevation=0
+      max-width=800> 
+      <v-card-title><span class="text-blue">Time Horizon (Years)</span></v-card-title>
+      <v-slider
+        v-model="time"
+        color="rgb(172, 193, 252)"
+        thumb-label="always"
+        max="10"
+        min="1"
+      ></v-slider>
+    </v-card>
+    <v-card-title><span class="text-blue">How much are you ready to invest?</span></v-card-title>
+    <v-text-field
+      class="input-field"
+      v-model="amount"
+      label="Enter an amount"
+      required
+      regular
+    ></v-text-field>
+    <v-btn
+      class="white--text"
+      color="rgb(0, 0, 255)"
+      min-width=300
+      min-height=50
+      class="mr-4"
+      x-large
+      @click="handleSubmit"
+    >
+    SHOW MY RESULTS
+    </v-btn>
+    </v-form>
+  </v-card-text>
   
-  .input-field {
-    width: 200px;
-    color: rgb(172, 193, 252);
-  }
-  
-  .profile {
-      display: flex;
-      justify-content: space-between;
-  }
-  
-  .mr-4 {
-      display: flex;
-      justify-content: space-between;
-  }
-  
-  .transparent {
-     background-color: transparent!important;
-     border-color: transparent!important;
-   }
-  </style> 
+  <v-card-text v-else>
+    <h1><b>Based on your profile, we recommend the following investments classes.</b></h1>
+
+    <v-card>
+      <v-tabs background-color="white"
+      color="deep-purple accent-4" grow v-model="active_tab">
+        <v-tab v-for="tab of tabs" :key="tab.id">
+          {{tab}}
+        </v-tab>
+      </v-tabs>
+    
+    </v-card>
+
+  </v-card-text>
+
+</v-card>
+
+{% endblock content %}
