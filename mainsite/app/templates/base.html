@@ -43,153 +43,11 @@
 
       <!-- Main Content -->
       <div id="content">
-
-
-        <div id="app" >
-          <v-app>
-            <v-main>
-              <v-container fluid>
-
-                <v-card flat>
-                  <v-tabs
-                    background-color="white"
-                    color="deep-purple accent-4"
-                    right
-                  >
-                    <v-tab>Calculator</v-tab>
-                    <v-tab @click="resetQS">Quick Start</v-tab>
-                    <v-tab>My Portfolio</v-tab>
-              
-                    <v-tab-item>
-                      <v-card flat>
-                        <v-card-text>hi ben</v-card-text>
-                      </v-card>
-                    </v-tab-item>
-                    <v-tab-item>
-                      <v-card flat>
-                        <v-card-text v-if="!quickRes" class="text-center">
-                          <span class="text-blue"><h1><b>Investment Quick Start</b></h1></span>
-                          <p>Want to invest but don’t know what or how?<br>Fill up your profile and we will recommend you something that is just right for you!</p>
-                          <v-form v-model="valid">
-                            <div class="profile">
-                              <b-container fluid>
-                                <v-col sm="3">
-                                My name is
-                              </v-col>
-                              <v-col sm="3">
-                                  <v-text-field
-                                    class="input-field"
-                                    v-model="name"
-                                    color="rgb(172, 193, 252)"
-                                    label="Input your name"
-                                    required
-                                    regular
-                                  ></v-text-field>
-                              </v-col>
-                              <v-col sm="3">
-                                  and I am
-                                </v-col>
-                                  <v-text-field
-                                    class="input-field"
-                                    v-model="age"
-                                    color="rgb(172, 193, 252)"
-                                    label="Input your age"
-                                    required
-                                    regular
-                                  ></v-text-field>
-                              </v-col>
-                              <v-col sm="3">
-                                  years old.
-                                </v-col>
-                              </b-container>
-                              </div>
-                            
-                          <v-card-title><span class="text-blue">Risk Appetite</span></v-card-title>
-                          <v-select class="input-field" v-model="risk">
-                            <option v-for="option in riskLevels" :value="option"></option>
-                          </v-select>
-                          <v-card 
-                            color="transparent"
-                            elevation=0
-                            max-width=800> 
-                            <v-card-title><span class="text-blue">Time Horizon (Years)</span></v-card-title>
-                            <v-slider
-                              v-model="slider"
-                              color="rgb(172, 193, 252)"
-                              thumb-label="always"
-                              step="10"
-                            ></v-slider>
-                          </v-card>
-                          <v-card-title><span class="text-blue">How much are you ready to invest?</span></v-card-title>
-                          <v-text-field
-                            class="input-field"
-                            v-model="amount"
-                            label="Enter an amount"
-                            required
-                            regular
-                          ></v-text-field>
-                          <v-btn
-                            class="white--text"
-                            color="rgb(0, 0, 255)"
-                            min-width=300
-                            min-height=50
-                            class="mr-4"
-                            x-large
-                            @click="handleSubmit"
-                          >
-                          SHOW MY RESULTS
-                          </v-btn>
-                          </v-form>
-                        </v-card-text>
-                        
-                        <v-card-text v-else>
-                          <h1><b>Based on your profile, we recommend the following investments classes.</b></h1>
-  
-
-                          <v-tabs
-                          background-color="white"
-                          color="deep-purple accent-4"
-                          centered
-                        >
-                          <v-tab>Real Estate</v-tab>
-                          <v-tab>Bonds</v-tab>
-                          <v-tab>ETFs</v-tab>
-                    
-                          <v-tab-item>
-                            <v-card flat>
-                              <v-card-text>
-                                <h5>REIT</h5>
-                                <p>A REIT is a corporation, trust, or association that invests directly in income-producing real estate and is traded like a stock.
-                                </p>
-                                <h2>Top Performing</h2>
-                                <p>Top gainers often continue to soar and reach new highs when their fundamentals are strong. The page lets you see top gaining stocks at a quick glance.                                </p>
-                              </v-card-text>
-                            </v-card>
-                          </v-tab-item> 
-
-                
-                        </v-card-text>
-
-                      </v-card>
-                    </v-tab-item>  
-                    <v-tab-item>
-                      <v-card flat>
-                        <v-card-text>3</v-card-text>
-                      </v-card>
-                    </v-tab-item>  
-                  </v-tabs>
-                </v-card>
-               
-              </v-container>
-            </v-main>
-          </v-app>
-        </div>
-
       
         <!-- Topbar -->
-        {% comment %}
+        <!-- {% comment %}
         {% include 'partials/_topbar.html' %}
-        {% endcomment %}
+        {% endcomment %} -->
         <!-- End of Topbar -->
 
         <!-- Begin Page Content -->
@@ -200,9 +58,30 @@
             <h1 class="h3 mb-0 text-gray-800">Dashboard</h1>
             <a href="#" class="d-none d-sm-inline-block btn btn-sm btn-primary shadow-sm"><i class="fas fa-download fa-sm text-white-50"></i> Generate Report</a>
           </div> -->
-          <div class="row">
-            {% block content %}
-            {% endblock %}
+          <!-- <div class="row"> -->
+          <div id="app" >
+            <v-app>
+              <v-main>
+                <v-container fluid>
+                  <v-toolbar flat light>
+                    <v-spacer></v-spacer>
+                    <v-btn-toggle
+                    v-model="text"
+                    tile
+                    color="deep-purple accent-3"
+                    group
+                  >
+                    <v-btn href="{% url 'financialcalculators' %}">Calculator</v-btn>
+                    <v-btn href="{% url 'quickstart' %}">Quick Start</v-btn>
+                    <v-btn href="{% url 'quickstart' %}">My Portfolio</v-btn>
+                    <v-btn href="#" data-toggle="modal" data-target="#logoutModal">Logout</v-btn>
+                  </v-btn-toggle>
+                  </v-toolbar>
+                  {% block content %}
+                  {% endblock %}
+                </v-container>
+              </v-main>
+            </v-app>
           </div>
         </div>
 
@@ -238,8 +117,8 @@
         </div>
         <div class="modal-body">Select "Logout" below if you are ready to end your current session.</div>
         <div class="modal-footer">
-          <button class="btn btn-secondary" type="button" data-dismiss="modal">Cancel</button>
-          <a class="btn btn-primary" href="login.html">Logout</a>
+          <button class="btn btn-secondary" style="color:white;" type="button" data-dismiss="modal">Cancel</button>
+          <a class="btn btn-primary" href="{% url 'logout' %}">Logout</a>
         </div>
       </div>
     </div>
@@ -276,15 +155,49 @@
       data: {
         quickRes: false,
         riskLevels: ["Low", "Medium", "High"],
+        active_tab: null,
+        tabs: [
+          { id: 0, name: "No recommendations found" },
+          { id: 1, name: 'FOREX' },
+          { id: 2, name: 'CFD' },
+          { id: 3, name: 'COMMODITIES' },
+          { id: 4, name: 'EQUITIES (STOCK)' },
+          { id: 5, name: 'FUTURES' },
+          { id: 6, name: 'OPTIONS' },
+          { id: 7, name: 'ETFs' },
+          { id: 8, name: 'BONDS' },
+          { id: 9, name: 'MUTUAL FUNDS' },
+          { id: 10, name: 'REITS' },
+        ]
+      },
+      computed: {
+        highCapital() {
+          return this.amount > 10000
+        },
+        longHorizon() {
+          return this.time > 3
+        },
+        recommendation() {
+          if (!this.highCapital && !this.longHorizon && this.risk=="High") return [1,2,3]
+          if (this.highCapital && !this.longHorizon && this.risk=="Medium") return [4]
+          if (!this.highCapital && this.longHorizon && this.risk=="High") return [5]
+          if (!this.highCapital && this.longHorizon && this.risk=="Medium") return [6]
+          if (!this.highCapital && !this.longHorizon && this.risk=="Low") return [7]
+          if (this.highCapital && this.longHorizon && this.risk=="Low") return [8]
+          if (!this.highCapital && this.longHorizon && this.risk=="Medium") return [9]
+          if (!this.highCapital && this.longHorizon && this.risk=="Low") return [10]
+          return [0]
+        }
       },
       methods: {
         handleSubmit() {
+          console.log(this.recommendation)
           this.quickRes = true
-          console.log(this.name)
         },
         resetQS() {
           this.quickRes = false
         }
+        
       },
       
     })
