@@ -8,11 +8,12 @@
     <p>Want to invest but don’t know what or how?<br>Fill up your profile and we will recommend you something that is just right for you!</p>
     <v-form v-model="valid">
       <div class="profile">
-        <b-container fluid>
-          <v-col sm="3">
-          My name is
-        </v-col>
-        <v-col sm="3">
+        <v-card
+          color="transparent"
+          elevation=0
+        >
+          <v-row>
+            <div class="profile-text">My name is</div>
             <v-text-field
               class="input-field"
               v-model="name"
@@ -21,10 +22,7 @@
               required
               regular
             ></v-text-field>
-        </v-col>
-        <v-col sm="3">
-            and I am
-          </v-col>
+            <div class="profile-text">and I am</div>
             <v-text-field
               class="input-field"
               v-model="age"
@@ -33,50 +31,58 @@
               required
               regular
             ></v-text-field>
-        </v-col>
-        <v-col sm="3">
-            years old.
-          </v-col>
-        </b-container>
-        </div>
-      
-    <v-card-title><span class="text-blue">Risk Appetite</span></v-card-title>
-    <v-select class="input-field" :items="riskLevels" v-model="risk"></v-select>
+            <div class="profile-text">years old.</div>
+          </v-row>
+        </v-card>
+      </div>
+
+<!---Investing Preferences-->
+
+  <v-row class="justify-center">
+    <v-card-title class="justify-center"><span class="text-blue">Risk Appetite</span></v-card-title>
+  </v-row>
+  <v-row>
+    <v-select class="input-field justify-center" :items="riskLevels" v-model="risk"></v-select>
     <v-card 
       color="transparent"
       elevation=0
       max-width=800> 
-      <v-card-title><span class="text-blue">Time Horizon (Years)</span></v-card-title>
-      <v-slider
+  </v-row>
+
+    <v-card-title class="justify-center"><span class="text-blue">Time Horizon (Years)</span></v-card-title>
+    <v-slider
         v-model="time"
         color="rgb(172, 193, 252)"
         thumb-label="always"
         max="10"
         min="1"
-      ></v-slider>
-    </v-card>
-    <v-card-title><span class="text-blue">How much are you ready to invest?</span></v-card-title>
+    ></v-slider>
+    </v-card >
+
+    <v-card-title class="justify-center"><span class="text-blue">How much are you ready to invest?</span></v-card-title>
     <v-text-field
-      class="input-field"
       v-model="amount"
       label="Enter an amount"
       required
       regular
     ></v-text-field>
+    
+    <div class="justify-center">
     <v-btn
-      class="white--text"
+      class="justify-center white--text"
       color="rgb(0, 0, 255)"
       min-width=300
       min-height=50
-      class="mr-4"
       x-large
       @click="handleSubmit"
     >
     SHOW MY RESULTS
     </v-btn>
+    </div>
     </v-form>
   </v-card-text>
-  
+</v-card>
+
   <v-card-text v-else>
     <h1><b>Based on your profile, we recommend the following investments classes.</b></h1>
 
@@ -94,4 +100,35 @@
 
 </v-card>
 
+<style scoped lang="scss">
+  .center-element >>> input {
+    text-align:center;
+    justify-content: center;
+  }
+
+  .text-blue {
+    color:rgb(0, 102, 255);
+    font-size: 300;
+    justify-content: center;
+  }
+  
+  .input-field {
+    width: 200px;
+    color: rgb(172, 193, 252);
+  }
+
+  .profile-text {
+    padding:10px;
+    margin-top:10px;
+  }
+  
+  
+  .transparent {
+     background-color: transparent!important;
+     border-color: transparent!important;
+   }
+  </style>
+
 {% endblock content %}
+
+

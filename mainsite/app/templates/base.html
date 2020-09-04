@@ -208,9 +208,20 @@
 
 
 <style scoped lang="scss">
+.center-element >>> input {
+  text-align:center;
+  justify-content: center;
+}
+
+.justify-center {
+  text-align:center;
+  justify-content: center;
+}
+
 .text-blue {
   color:rgb(0, 102, 255);
   font-size: 300;
+  justify-content: center;
 }
 
 .input-field {
@@ -219,13 +230,19 @@
 }
 
 .profile {
-    display: flex;
+    display: inline-block;
     justify-content: space-between;
 }
 
+.profile-text {
+  padding:10px;
+  margin-top:10px;
+}
+
 .mr-4 {
-    display: flex;
+    display: inline-block;
     justify-content: space-between;
+    text-align: center;
 }
 
 .transparent {
