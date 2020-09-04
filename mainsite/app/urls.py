@@ -4,10 +4,12 @@ from . import views
 # importing dash app to pre-render
 from .dash_apps.finished_apps import sample_dash_app
 from .dash_apps.finished_apps import prices_app
+from django.views.generic import RedirectView
 
 # index path
 urlpatterns = [
-    path('', views.index, name='index'),
+    path('', RedirectView.as_view(url='index.html')),
+    path('index.html', views.index, name='index'),
 ]
 
 # account paths
