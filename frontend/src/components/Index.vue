@@ -1,15 +1,10 @@
 <template>
-<v-app>
- <v-navigation-drawer
-      v-model="drawer"
-      color="primary"
-      dark
-      app
-    >
+  <v-app>
+    <v-navigation-drawer v-model="drawer" color="primary" dark app>
       <v-list dense>
         <v-list-item two-line>
-          <v-list-item-avatar tile >
-            <img src="../assets/team_logov2.png">
+          <v-list-item-avatar tile>
+            <img src="../assets/team_logov2.png" />
           </v-list-item-avatar>
           <v-list-item-content>
             <v-list-item-title>READYPLAYER1</v-list-item-title>
@@ -27,73 +22,61 @@
       </v-list>
     </v-navigation-drawer>
 
-    <v-app-bar
-      app
-      color="white"
-      flat
-    >
+    <v-app-bar app color="white" flat>
       <v-app-bar-nav-icon @click.stop="drawer = !drawer"></v-app-bar-nav-icon>
     </v-app-bar>
 
     <v-main>
       <v-card>
-    <v-tabs
-      background-color="white"
-      color="deep-purple accent-4"
-      right
-    >
-      <v-tab>Home</v-tab>
-      <v-tab>Calculator</v-tab>
-      <v-tab>Quick Start</v-tab>
-      <v-tab>My Portfolio</v-tab>
-      <v-tab @click="logout">Logout</v-tab>
-      <v-tab-item>
-        <v-container fluid>
-          <Home></Home>
-        </v-container>
-      </v-tab-item>
-      <v-tab-item>
-        <v-container fluid>
-          <Calculator></Calculator>
-        </v-container>
-      </v-tab-item>
-      <v-tab-item>
-        <v-container fluid>
-          <QuickStart></QuickStart>
-        </v-container>
-      </v-tab-item>
-      <v-tab-item>
-        <v-container fluid>
-          <Calculator></Calculator>
-        </v-container>
-      </v-tab-item>
-      <v-tab-item>
-        <v-container fluid>
-          <Login></Login>
-        </v-container>
-      </v-tab-item>
-      <v-tab-item>
-        <v-container fluid>
-          <SignUp></SignUp>
-        </v-container>
-      </v-tab-item>
-    </v-tabs>
-  </v-card>
+        <v-tabs background-color="white" color="deep-purple accent-4" right>
+          <v-tab>Home</v-tab>
+          <v-tab>Calculator</v-tab>
+          <v-tab>Quick Start</v-tab>
+          <v-tab>My Portfolio</v-tab>
+          <v-tab @click="logout">Logout</v-tab>
+          <v-tab-item>
+            <v-container fluid>
+              <Home></Home>
+            </v-container>
+          </v-tab-item>
+          <v-tab-item>
+            <v-container fluid>
+              <Calculator></Calculator>
+            </v-container>
+          </v-tab-item>
+          <v-tab-item>
+            <v-container fluid>
+              <QuickStart></QuickStart>
+            </v-container>
+          </v-tab-item>
+          <v-tab-item>
+            <v-container fluid>
+              <Calculator></Calculator>
+            </v-container>
+          </v-tab-item>
+          <v-tab-item>
+            <v-container fluid>
+              <Login></Login>
+            </v-container>
+          </v-tab-item>
+          <v-tab-item>
+            <v-container fluid>
+              <SignUp></SignUp>
+            </v-container>
+          </v-tab-item>
+        </v-tabs>
+      </v-card>
     </v-main>
-    <v-footer
-      color="secondary"
-      app
-    >
+    <v-footer color="secondary" app>
       <span class="white--text">&copy; {{ new Date().getFullYear() }}</span>
     </v-footer>
-</v-app>
+  </v-app>
 </template>
 
 <script>
-import Home from '../components/Home.vue'
-import Calculator from '../components/Calculator'
-import QuickStart from '../components/QuickStart'
-
+import Home from "../components/Home";
+import Calculator from "../components/Calculator";
+import QuickStart from "../components/QuickStart";
 
 export default {
   components: {
@@ -108,14 +91,13 @@ export default {
     drawer: null,
   }),
   methods: {
-    logout: function () {
-      this.$store.dispatch('logout')
-      .then(() => {
-        this.$router.push('/login')
-      })
-    }
-  }
-}
+    logout: function() {
+      this.$store.dispatch("logout").then(() => {
+        this.$router.push("/login");
+      });
+    },
+  },
+};
 </script>
 
 <style>
@@ -125,7 +107,7 @@ export default {
 
 .container {
   padding: 5rem 0;
-  background-color: #7749BD;
+  background-color: #7749bd;
 }
 
 .circle {
@@ -169,9 +151,8 @@ export default {
 }
 
 .text-blue {
-  color:rgb(0, 102, 255);
+  color: rgb(0, 102, 255);
   font-size: 300;
   justify-content: center;
 }
-  
 </style>

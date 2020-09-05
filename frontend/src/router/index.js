@@ -4,7 +4,6 @@ import store from '../store.js'
 import Index from '../components/Index.vue'
 import Login from '../components/Login.vue'
 import Register from '../components/Register.vue'
-import Home from '../components/Home.vue'
 
 Vue.use(Router)
 
