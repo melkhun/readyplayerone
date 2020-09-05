@@ -16,15 +16,6 @@ if (token) {
 Vue.use(VueKinesis)
 Vue.config.productionTip = false
 
-Vue.config({
-  css: {
-    loaderOptions: {
-      sass: {
-        data: `@import "~/assets/variables.scss']"`
-      }
-    }
-  }
-})
 
 new Vue({
   router,
