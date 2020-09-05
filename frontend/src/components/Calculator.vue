@@ -46,6 +46,7 @@
         <v-card class="calculator-form" color="white">
           <v-form>
             <v-text-field
+              v-model="income"
               class="input-field"
               color="rgb(172, 193, 252)"
               label="Your total monthly income"
@@ -53,23 +54,29 @@
               regular
             ></v-text-field>
 
-          <v-btn
-          class="justify-center white--text"
-          color="rgb(0, 0, 255)"
-          min-width=300
-          min-height=50
-          x-large
-          @click="calculateBudget"
-          >
-          CALCULATE
-          </v-btn>
+            <v-text-field
+              v-model="expense"
+              class="input-field"
+              color="rgb(172, 193, 252)"
+              label="Your total monthly expense"
+              required
+              regular
+            ></v-text-field>
+
+            <v-btn
+              class="justify-center white--text"
+              color="rgb(0, 0, 255)"
+              min-width="300"
+              min-height="50"
+              x-large
+              @click="calculateBudget"
+            >
+              CALCULATE
+            </v-btn>
           </v-form>
         </v-card>
       </v-flex>
     </div>
-
-
-
   </div>
 </template>
 
@@ -78,12 +85,23 @@ export default {
   data: function() {
     return {
       budgetFormHidden: true,
+      income: 0,
+      expense: 0,
     };
   },
   methods: {
     calculateBudget() {
       console.log(this.recommendation);
       this.showResult = true;
+    },
+    currencyFormat(num) {
+      return "$" + num.toFixed(0).replace(/(\d)(?=(\d{3})+(?!\d))/g, "$1,");
+    },
+  },
+  computed: {
+    calculateBudget() {
+      var netCashFlow = this.income - this.expense;
+      return currencyFormat(netCashFlow);
     },
   },
 };
