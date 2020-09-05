@@ -1,5 +1,25 @@
 <template>
   <div class="Home">
+
+  <kinesis-container class="container">
+      <kinesis-element>
+        <!-- LogRocket logo -->
+      </kinesis-element>
+
+      <!-- background-circles-props -->
+      <kinesis-element axis="y">
+        <div class="circle circle-purple"></div>
+      </kinesis-element>
+      <kinesis-element axis="y">
+        <div class="circle circle-purple1"></div>
+      </kinesis-element>
+      <kinesis-element axis="y">
+        <div class="circle circle-purple2"></div>
+      </kinesis-element>
+      <kinesis-element axis="y">
+        <div class="circle circle-purple3"></div>
+      </kinesis-element>
+    </kinesis-container>
     <v-card
       color="blue"
       dark
@@ -77,10 +97,6 @@
       onboarding: 0,
     }),
 
-    mounted (){
-      // this.getNews()
-    },
-
     methods: {
       next () {
         this.onboarding = this.onboarding + 1 === this.length
@@ -92,14 +108,6 @@
           ? this.length - 1
           : this.onboarding - 1
       },
-      // async getNews() {
-      //   try {
-      //     var resp = await apis.getNews()
-      //     console.log(resp)
-      //   } catch(e) {
-      //     console.error(e)
-      //   }
-      // },
     },
   }
 </script>
