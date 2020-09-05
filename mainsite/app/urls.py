@@ -35,3 +35,7 @@ urlpatterns += [
 urlpatterns += [
     path('quickstart', views.quickstart, name='quickstart'),
 ]
+
+urlpatterns += [
+    path('topgains', views.toptengains, name='topgains'),
+]

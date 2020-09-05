@@ -5,6 +5,7 @@ import plotly.graph_objects as go
 from django.contrib.auth.decorators import login_required
 
 # Create your views here.
+
 @login_required(login_url='login')
 def index(request):
     return render(request, 'index.html')
@@ -41,7 +42,12 @@ def testdashboard(request):
     context = {}
     return render(request, 'app/test_dashboard.html', context)
 
-
+from django.http import JsonResponse
+from .scrape import *
+def toptengains(request):
+    response_data = {}
+    print(get_top_gains())
+    return JsonResponse(get_top_gains().to_dict())
 
 # accounts views
 from django.contrib.auth.forms import UserCreationForm
