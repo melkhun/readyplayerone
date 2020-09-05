@@ -45,6 +45,7 @@
       <v-flex xs12 sm6 offset-sm3>
         <v-card class="calculator-form" color="white">
           <v-form>
+            <div class="profile-text">Your total monthly income</div>
             <v-text-field
               v-model="income"
               class="input-field"
@@ -53,7 +54,7 @@
               required
               regular
             ></v-text-field>
-
+            <div class="profile-text">Salary</div>
             <v-text-field
               v-model="expense"
               class="input-field"
@@ -106,5 +107,10 @@ export default {
 <style scoped>
 .calculator-form {
   padding: 40px 40px 40px 40px;
+}
+
+.profile-text {
+  padding: 10px;
+  margin-top: 10px;
 }
 </style>
