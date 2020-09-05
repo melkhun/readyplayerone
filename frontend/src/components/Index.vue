@@ -27,8 +27,9 @@
     </v-app-bar>
 
     <v-main>
+    
       <v-card>
-        <v-tabs background-color="white" color="deep-purple accent-4" right>
+        <v-tabs background-color="white" color="deep-purple accent-4" right class="fixed-tabs-bar">
           <v-tab>Home</v-tab>
           <v-tab>Calculator</v-tab>
           <v-tab>Quick Start</v-tab>
@@ -101,6 +102,14 @@ export default {
 </script>
 
 <style>
+
+.fixed-tabs-bar .v-tabs-bar {
+    position: -webkit-sticky;
+    position: sticky;
+    top: 4rem;
+    z-index: 2;
+}
+
 #app {
   text-align: center;
 }
