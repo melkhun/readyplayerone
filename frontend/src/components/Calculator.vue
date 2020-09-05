@@ -2,7 +2,7 @@
   <div class="Calculator">
     <v-container flex colour="transparent">
       <v-row flex class="justify-center">
-        <v-col cols="12" sm="4">
+        <v-col cols="12" md="4">
           <v-btn
             class="pa-5"
             min-height="100px"
@@ -19,7 +19,7 @@
             ></v-img>
           </v-btn>
         </v-col>
-        <v-col cols="12" sm="4">
+        <v-col cols="12" md="4">
           <v-btn
             class="pa-5"
             min-height="100px"
