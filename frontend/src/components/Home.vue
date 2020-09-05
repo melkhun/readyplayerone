@@ -77,6 +77,10 @@
       onboarding: 0,
     }),
 
+    mounted (){
+      // this.getNews()
+    },
+
     methods: {
       next () {
         this.onboarding = this.onboarding + 1 === this.length
@@ -88,6 +92,14 @@
           ? this.length - 1
           : this.onboarding - 1
       },
+      // async getNews() {
+      //   try {
+      //     var resp = await apis.getNews()
+      //     console.log(resp)
+      //   } catch(e) {
+      //     console.error(e)
+      //   }
+      // },
     },
   }
 </script>
