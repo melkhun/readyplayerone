@@ -204,30 +204,30 @@
   };
 </script>
 
-<style scoped lang="scss">
-  .center-element >>> input {
-    text-align:center;
-    justify-content: center;
-  }
+// <style scoped lang="scss">
+//   .center-element >>> input {
+//     text-align:center;
+//     justify-content: center;
+//   }
 
-  .text-blue {
-    color:rgb(0, 102, 255);
-    font-size: 300;
-    justify-content: center;
-  }
+//   .text-blue {
+//     color:rgb(0, 102, 255);
+//     font-size: 300;
+//     justify-content: center;
+//   }
   
-  .input-field {
-    width: 100px;
-    color: rgb(172, 193, 252);
-  }
+//   .input-field {
+//     width: 100px;
+//     color: rgb(172, 193, 252);
+//   }
 
-  .profile-text {
-    padding:10px;
-    margin-top:10px;
-  }
+//   .profile-text {
+//     padding:10px;
+//     margin-top:10px;
+//   }
 
-  .transparent {
-     background-color: transparent!important;
-     border-color: transparent!important;
-   }
-</style>
+//   .transparent {
+//      background-color: transparent!important;
+//      border-color: transparent!important;
+//    }
+// </style>
