@@ -65,6 +65,7 @@
         ></v-text-field>
 
         <div class="justify-center">
+        <div class="button-style">
         <v-btn
           class="justify-center white--text"
           color="rgb(0, 0, 255)"
@@ -75,6 +76,7 @@
         >
         SHOW MY RESULTS
         </v-btn>
+        </div>
         </div>
 
       </v-form>
@@ -205,9 +207,12 @@
 </script>
 
 <style scoped lang="scss">
+.button-style {
+  padding: 80px 50px 20px 50px;
+}
 
 .block-card {
-  padding: 50px 40px 60px 40px;
+  padding: 50px 40px 40px 40px;
 }
 .center-element >>> input {
   text-align:center;

@@ -1,14 +1,14 @@
 <template>
   <v-app>
-    <v-navigation-drawer v-model="drawer" color="primary" dark app>
+    <v-navigation-drawer v-model="drawer" color="indigo lighten-1" dark app>
       <v-list dense>
         <v-list-item two-line>
           <v-list-item-avatar tile>
             <img src="../assets/team_logov2.png" />
           </v-list-item-avatar>
           <v-list-item-content>
-            <v-list-item-title>READYPLAYER1</v-list-item-title>
-            <v-list-item-subtitle>Subtext</v-list-item-subtitle>
+            <v-list-item-title>READY PLAYER 1</v-list-item-title>
+            <v-list-item-subtitle>Financially Ready in 3, 2, 1</v-list-item-subtitle>
           </v-list-item-content>
         </v-list-item>
         <v-list-item link>
@@ -107,7 +107,7 @@ export default {
 
 .container {
   padding: 5rem 0;
-  background-color: #7749bd;
+  background-color: #828deb;
 }
 
 .circle {
