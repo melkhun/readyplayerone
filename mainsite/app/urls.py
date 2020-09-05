@@ -37,5 +37,6 @@ urlpatterns += [
 ]
 
 urlpatterns += [
-    path('topgains.html', views.toptengains, name='topgains'),
+    path('gettopgains', views.gettopgains, name='gettopgains'),
+    path('getnews', views.getnews, name='getnews'),
 ]
