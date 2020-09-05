@@ -88,7 +88,7 @@
           <v-form class="text-blue">
             <div class="d-flex"></div>
 
-            <v-expansion-panels v-model="panel" :readonly="readonly" multiple>
+            <v-expansion-panels v-model="panel" multiple>
               <v-expansion-panel>
                 <v-expansion-panel-header class="text-blue"
                   ><b>ASSETS</b></v-expansion-panel-header
@@ -220,7 +220,7 @@ export default {
 
 <style scoped>
 .button-style {
-  padding: 40px 60px 20px 40px;
+  padding: 40px 40px 20px 40px;
 }
 
 .output-style {
@@ -231,8 +231,9 @@ export default {
   padding: 40px 40px 50px 40px;
 }
 
-.profile-text {
+.v-expansion-panel-content >>> profile-text {
   padding: 10px;
   margin-top: 10px;
+  color: indigo darken-4;
 }
 </style>
