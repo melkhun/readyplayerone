@@ -1,13 +1,13 @@
 <template>
   <div class="Calculator">
     <v-container flex colour="transparent">
-      <v-row class="justify-center">
+      <v-row flex class="justify-center">
         <v-col cols="12" sm="4">
           <v-btn
             class="pa-5"
-            min-height="150px"
+            min-height="100px"
             rounded
-            @click="budgetCalculator"
+            @click="budgetFormHidden = !budgetFormHidden"
           >
             <span class="text-blue">Budget Calculator</span>
 
@@ -22,7 +22,7 @@
         <v-col cols="12" sm="4">
           <v-btn
             class="pa-5"
-            min-height="150px"
+            min-height="100px"
             rounded
             @click="assetCalculator"
           >
@@ -38,16 +38,59 @@
         </v-col>
       </v-row>
     </v-container>
+
+    <!---Show Form-->
+
+    <div v-show="budgetFormHidden">
+      <v-flex xs12 sm6 offset-sm3>
+        <v-card class="calculator-form" color="white">
+          <v-form>
+            <v-text-field
+              class="input-field"
+              color="rgb(172, 193, 252)"
+              label="Your total monthly income"
+              required
+              regular
+            ></v-text-field>
+
+          <v-btn
+          class="justify-center white--text"
+          color="rgb(0, 0, 255)"
+          min-width=300
+          min-height=50
+          x-large
+          @click="calculateBudget"
+          >
+          CALCULATE
+          </v-btn>
+          </v-form>
+        </v-card>
+      </v-flex>
+    </div>
+
+
+
   </div>
 </template>
 
 <script>
 export default {
+  data: function() {
+    return {
+      budgetFormHidden: true,
+    };
+  },
   methods: {
-    budgetCalculator() {
-        console.log(this.recommendation)
-        this.showResult = true
-      },
-  }
+    calculateBudget() {
+      console.log(this.recommendation);
+      this.showResult = true;
+    },
+  },
 };
 </script>
+
+<style scoped>
+.calculator-form {
+  padding: 40px 40px 40px 40px;
+}
+</style>
