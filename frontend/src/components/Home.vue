@@ -1,17 +1,22 @@
 <template>
   <div class="Home">
-    <p>Test</p>
+    <!-- <v-carousel>
+      <v-carousel-item v-for="(component, i) in components"></v-carousel-item>
+    </v-carousel> -->
   </div>
 </template>
 
+
 <script>
-export default {}
-</script>
+// import A from '@/components/A'
+// import B from '@/components/B'
+// import C from '@/components/C'
 
-<style scoped>
-
-.profile-text {
-  padding: 10px;
-  margin-top: 10px;
+export default {
+    // components: {
+    //   A,
+    //   B,
+    //   C
+  // }
 }
-</style>
+</script>
