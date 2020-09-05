@@ -6,76 +6,79 @@
 <!-- input -->
   <v-card-text v-if="!showResult" class="text-center">
 
-    <span class="text-blue"><h1><b>Investment Quick Start</b></h1></span>
+    <span class="text-blue"><h1><b>Investment Quick Start</b></h1></span><br>
     <p>Want to invest but don’t know what or how?<br>Fill up your profile and we will recommend you something that is just right for you!</p>
-    <v-form>
-      <div class="profile">
-        <v-card
-          color="transparent"
-          elevation=0
+
+    <v-flex xs12 sm6 offset-sm3>
+      <v-form>
+        <div class="profile">
+          <v-card
+            color="transparent"
+            elevation=0
+          >
+            <v-row>
+              <div class="profile-text">My name is</div>
+              <v-text-field
+                class="input-field"
+                v-model="name"
+                color="rgb(172, 193, 252)"
+                label="Input your name"
+                required
+                regular
+              ></v-text-field>
+              <div class="profile-text">and I am</div>
+              <v-text-field
+                class="input-field"
+                v-model="age"
+                color="rgb(172, 193, 252)"
+                label="Input your age"
+                required
+                regular
+              ></v-text-field>
+              <div class="profile-text">years old.</div>
+            </v-row>
+          </v-card>
+        </div>
+
+        <v-row class="justify-center">
+          <v-card-title class="justify-center"><span class="text-blue">Risk Appetite</span></v-card-title>
+        </v-row>
+        <v-row>
+          <v-select class="input-field justify-center" :items="riskLevels" v-model="risk"></v-select>
+        </v-row>
+
+        <v-card-title class="justify-center"><span class="text-blue">Time Horizon (Years)</span></v-card-title>
+        <v-slider
+            v-model="time"
+            color="rgb(172, 193, 252)"
+            thumb-label="always"
+            max="10"
+            min="1"
+        ></v-slider>
+
+        <v-card-title class="justify-center"><span class="text-blue">How much are you ready to invest?</span></v-card-title>
+        <v-text-field
+          v-model="amount"
+          label="Enter an amount"
+          required
+          regular
+        ></v-text-field>
+
+        <div class="justify-center">
+        <v-btn
+          class="justify-center white--text"
+          color="rgb(0, 0, 255)"
+          min-width=300
+          min-height=50
+          x-large
+          @click="handleSubmit"
         >
-          <v-row>
-            <div class="profile-text">My name is</div>
-            <v-text-field
-              class="input-field"
-              v-model="name"
-              color="rgb(172, 193, 252)"
-              label="Input your name"
-              required
-              regular
-            ></v-text-field>
-            <div class="profile-text">and I am</div>
-            <v-text-field
-              class="input-field"
-              v-model="age"
-              color="rgb(172, 193, 252)"
-              label="Input your age"
-              required
-              regular
-            ></v-text-field>
-            <div class="profile-text">years old.</div>
-          </v-row>
-        </v-card>
-      </div>
+        SHOW MY RESULTS
+        </v-btn>
+        </div>
 
-      <v-row class="justify-center">
-        <v-card-title class="justify-center"><span class="text-blue">Risk Appetite</span></v-card-title>
-      </v-row>
-      <v-row>
-        <v-select class="input-field justify-center" :items="riskLevels" v-model="risk"></v-select>
-      </v-row>
-
-      <v-card-title class="justify-center"><span class="text-blue">Time Horizon (Years)</span></v-card-title>
-      <v-slider
-          v-model="time"
-          color="rgb(172, 193, 252)"
-          thumb-label="always"
-          max="10"
-          min="1"
-      ></v-slider>
-
-      <v-card-title class="justify-center"><span class="text-blue">How much are you ready to invest?</span></v-card-title>
-      <v-text-field
-        v-model="amount"
-        label="Enter an amount"
-        required
-        regular
-      ></v-text-field>
-
-      <div class="justify-center">
-      <v-btn
-        class="justify-center white--text"
-        color="rgb(0, 0, 255)"
-        min-width=300
-        min-height=50
-        x-large
-        @click="handleSubmit"
-      >
-      SHOW MY RESULTS
-      </v-btn>
-      </div>
-
-    </v-form>
+      </v-form>
+    </v-flex>
   </v-card-text>
 
 <!-- output --> 
@@ -214,7 +217,7 @@
   }
   
   .input-field {
-    width: 200px;
+    width: 100px;
     color: rgb(172, 193, 252);
   }
 

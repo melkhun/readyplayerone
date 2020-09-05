@@ -44,7 +44,9 @@
     >
       <v-tab>Calculator</v-tab>
       <v-tab>Quick Start</v-tab>
-      <v-tab>My Portfoliio</v-tab>
+      <v-tab>My Portfolio</v-tab>
+      <v-tab>Login</v-tab>
+      <v-tab>Sign Up</v-tab>
       <v-tab-item>
         <v-container fluid>
           <Calculator></Calculator>
@@ -58,6 +60,16 @@
       <v-tab-item>
         <v-container fluid>
           <Calculator></Calculator>
+        </v-container>
+      </v-tab-item>
+      <v-tab-item>
+        <v-container fluid>
+          <Login></Login>
+        </v-container>
+      </v-tab-item>
+      <v-tab-item>
+        <v-container fluid>
+          <SignUp></SignUp>
         </v-container>
       </v-tab-item>
     </v-tabs>
@@ -75,11 +87,15 @@
 <script>
 import Calculator from './components/Calculator'
 import QuickStart from './components/QuickStart'
+import Login from './components/Login'
+import SignUp from './components/SignUp'
 
 export default {
   components: {
     Calculator,
-    QuickStart
+    QuickStart,
+    Login,
+    SignUp
   },
   props: {
     source: String,

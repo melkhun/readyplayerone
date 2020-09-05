@@ -3,7 +3,7 @@
 
 <v-card flat>
   <v-card-text>
-    <h1><b>calc zz</b></h1>
+    <h1><b>Calculator</b></h1>
   </v-card-text>
 </v-card>
 
