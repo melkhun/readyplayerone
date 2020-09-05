@@ -4,10 +4,4 @@ module.exports = {
   "transpileDependencies": [
     "vuetify"
   ],
-  vuetify: {
-    customVariables: ['~/assets/variables.scss'],
-    theme: {
-      dark: false
-    }
-  },
 }
