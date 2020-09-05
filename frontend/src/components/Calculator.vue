@@ -24,7 +24,7 @@
             class="pa-5"
             min-height="100px"
             rounded
-            @click="assetCalculator"
+            @click="assetFormHidden = !assetFormHidden"
           >
             <span class="text-blue">Asset Calculator</span>
 
@@ -74,10 +74,51 @@
             >
               CALCULATE
             </v-btn>
+            <div>{{ netCashFlow }}</div>
           </v-form>
         </v-card>
       </v-flex>
     </div>
+
+    <div v-show="assetFormHidden">
+      <v-flex xs12 sm6 offset-sm3>
+        <v-card class="calculator-form" color="white">
+          <v-form>
+            <div class="profile-text">Your total monthly income</div>
+            <v-text-field
+              v-model="income"
+              class="input-field"
+              color="rgb(172, 193, 252)"
+              label="Your total monthly income"
+              required
+              regular
+            ></v-text-field>
+            <div class="profile-text">Salary</div>
+            <v-text-field
+              v-model="expense"
+              class="input-field"
+              color="rgb(172, 193, 252)"
+              label="Your total monthly expense"
+              required
+              regular
+            ></v-text-field>
+
+            <v-btn
+              class="justify-center white--text"
+              color="rgb(0, 0, 255)"
+              min-width="300"
+              min-height="50"
+              x-large
+              @click="calculateAsset"
+            >
+              CALCULATE
+            </v-btn>
+            <div>{{ netCashFlow }}</div>
+          </v-form>
+        </v-card>
+      </v-flex>
+    </div>
+
   </div>
 </template>
 
@@ -88,6 +129,7 @@ export default {
       budgetFormHidden: true,
       income: 0,
       expense: 0,
+      netCashFlow: ""
     };
   },
   methods: {
@@ -100,13 +142,17 @@ export default {
       var netCashFlow = this.income - this.expense;
       return this.currencyFormat(netCashFlow);
     },
+    calculateAsset() {
+      var netCashFlow = this.income - this.expense;
+      return this.currencyFormat(netCashFlow);
+    },
   },
 };
 </script>
 
 <style scoped>
 .calculator-form {
-  padding: 40px 40px 40px 40px;
+  padding: 40px 40px 50px 40px;
 }
 
 .profile-text {

@@ -1,9 +1,10 @@
 import Vue from 'vue'
 import Router from 'vue-router'
 import store from '../store.js'
-import Home from '../components/Home.vue'
+import Index from '../components/Index.vue'
 import Login from '../components/Login.vue'
 import Register from '../components/Register.vue'
+import Home from '../components/Home.vue'
 
 Vue.use(Router)
 
@@ -13,7 +14,7 @@ let router = new Router({
     {
       path: '/',
       name: '/',
-      component: Home,
+      component: Index,
       // meta: { 
       //   requiresAuth: true
       // }

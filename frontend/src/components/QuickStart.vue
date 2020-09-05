@@ -1,7 +1,7 @@
 <template>
 <div class="Quickstart">
   
-<v-card flat>
+<v-card flat class="block-card">
 
 <!-- input -->
   <v-card-text v-if="!showResult" class="text-center">
@@ -205,23 +205,27 @@
 </script>
 
 <style scoped lang="scss">
-  .center-element >>> input {
-    text-align:center;
-    justify-content: center;
+
+.block-card {
+  padding: 50px 40px 60px 40px;
+}
+.center-element >>> input {
+  text-align:center;
+  justify-content: center;
+}
+
+.input-field {
+  width: 100px;
+  color: rgb(172, 193, 252);
+}
+
+.profile-text {
+  padding:10px;
+  margin-top:10px;
+}
+
+.transparent {
+    background-color: transparent!important;
+    border-color: transparent!important;
   }
-  
-//   .input-field {
-//     width: 100px;
-//     color: rgb(172, 193, 252);
-//   }
-
-//   .profile-text {
-//     padding:10px;
-//     margin-top:10px;
-//   }
-
-//   .transparent {
-//      background-color: transparent!important;
-//      border-color: transparent!important;
-//    }
-// </style>
+</style>
