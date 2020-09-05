@@ -209,12 +209,6 @@
     text-align:center;
     justify-content: center;
   }
-
-  .text-blue {
-    color:rgb(0, 102, 255);
-    font-size: 300;
-    justify-content: center;
-  }
   
   .input-field {
     width: 100px;
