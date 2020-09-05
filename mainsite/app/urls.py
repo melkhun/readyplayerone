@@ -23,14 +23,14 @@ urlpatterns += [
 urlpatterns += [
     path('maindashboard', views.maindashboard, name='maindashboard'),
     path('testdashboard', views.testdashboard, name='testdashboard'),
-    path('financialcalculators', views.financialcalculators, name='financialcalculators')
+    # path('financialcalculators', views.financialcalculators, name='financialcalculators')
 ]
 
 # calculator paths
-urlpatterns += [
-    path('financialcalculators/budget', views.budgetcalculator, name='budgetcalculator'),
-    path('financialcalculators/networth', views.networthcalculator, name='networthcalculator'),
-]
+# urlpatterns += [
+#     path('financialcalculators/budget', views.budgetcalculator, name='budgetcalculator'),
+#     path('financialcalculators/networth', views.networthcalculator, name='networthcalculator'),
+# ]
 
 urlpatterns += [
     path('quickstart', views.quickstart, name='quickstart'),
