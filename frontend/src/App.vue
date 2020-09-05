@@ -35,3 +35,14 @@
     }
   }
 </script>
+
+<style>
+@font-face {
+  font-family: "DMSans";
+  src: local("DMSans"),
+   url(./fonts/DMSans/DMSans-Regular.ttf) format("truetype");
+}
+.v-application {
+   font-family: DMSans, sans-serif !important;
+}
+</style>

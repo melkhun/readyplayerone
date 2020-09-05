@@ -21,7 +21,6 @@
               justify="center"
               tag="v-card-text"
             >
-              {{newsdata}}
               Transparent themed, for background-imaged slides. Background color black added for demonstration purposes.
             </v-row>
           </v-card>
@@ -72,13 +71,10 @@
 // import B from '@/components/B'
 // import C from '@/components/C'
 
-// import * as apis from '@/api'
-
   export default {
     data: () => ({
       length: 4,
       onboarding: 0,
-      newsdata: null,
     }),
 
     mounted (){
