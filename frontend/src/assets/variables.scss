@@ -1,0 +1,20 @@
+@import url('https://fonts.googleapis.com/css2?family=DM+Sans:wght@400;700&display=swap');
+
+$body-font-family: 'DM Sans', sans-serif;
+
+.v-application {
+    .display-1,
+    .display-2,
+    .display-3,
+    .display-4,
+    .headline,
+    .title,
+    .subtitle-1,
+    .subtitle-2,
+    .body-1,
+    .body-2,
+    .caption,
+    .overline {
+      font-family: $body-font-family !important;
+    }
+  }

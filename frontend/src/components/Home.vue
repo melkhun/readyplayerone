@@ -108,3 +108,61 @@ export default {
   }
 }
 </script>
+
+<style>
+#app {
+  text-align: center;
+}
+
+.container {
+  padding: 5rem 0;
+  background-color: #7749BD;
+}
+
+.circle {
+  position: absolute;
+  border-radius: 100%;
+}
+
+.circle.circle-purple {
+  border: 10px solid #f2eafa;
+  opacity: 0.1;
+  width: 4vw;
+  height: 4vw;
+  left: 10%;
+  top: 25%;
+}
+
+.circle.circle-purple1 {
+  border: 15px solid #f2eafa;
+  opacity: 0.1;
+  width: 8vw;
+  height: 8vw;
+  right: -2%;
+  bottom: 17%;
+}
+.circle.circle-purple2 {
+  background-color: #f2eafa;
+  opacity: 0.1;
+  width: 5vw;
+  height: 5vw;
+  left: 20%;
+  bottom: 17%;
+}
+
+.circle.circle-purple3 {
+  border: 15px solid #f2eafa;
+  opacity: 0.3;
+  width: 3vw;
+  height: 3vw;
+  top: 80%;
+  left: 60%;
+}
+
+.text-blue {
+  color:rgb(0, 102, 255);
+  font-size: 300;
+  justify-content: center;
+}
+  
+</style>
