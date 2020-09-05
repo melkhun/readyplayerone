@@ -37,10 +37,7 @@ INSTALLED_APPS = [
     'django.contrib.sessions',
     'django.contrib.messages',
     'django.contrib.staticfiles',
-    'django_plotly_dash.apps.DjangoPlotlyDashConfig',
     'app',
-    'channels',
-    'channels_redis',
 ]
 
 MIDDLEWARE = [
@@ -123,9 +120,7 @@ USE_L10N = True
 
 USE_TZ = True
 
-CRISPY_TEMPLATE_PACK = "bootstrap4"
 
-ASGI_APPLICATION = 'project_files.routing.application'
 CHANNEL_LAYERS = {
     'default': {
         'BACKEND': 'channels_redis.core.RedisChannelLayer',
@@ -138,20 +133,6 @@ CHANNEL_LAYERS = {
 # Static files (CSS, JavaScript, Images)
 # https://docs.djangoproject.com/en/3.0/howto/static-files/
 
-STATICFILES_FINDER = [
-    'django.contrib.staticfiles.finders.FileSystemFinder',
-    'django.contrib.staticfiles.finders.AppDirectoriesFinder',
-    'django_plotly_dash.finders.DashAssetFinder',
-    'django_plotly_dash.finders.DashComponentFinder'
-]
-
-PLOTLY_COMPONENTS = [
-    'dash_core_components',
-    'dash_html_components',
-    'dash_renderer',
-    'dpd_components'
-]
-X_FRAME_OPTIONS = 'SAMEORIGIN'
 
 STATICFILES_LOCATION = 'static'
 STATIC_URL = '/static/'
