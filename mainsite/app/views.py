@@ -8,12 +8,52 @@ from django.contrib.auth.decorators import login_required
 
 from django.http import JsonResponse
 from .scrape import *
+
 def gettopgains(request):
     response_data = {}
-    # print(get_top_gains())
     resp = JsonResponse(get_top_gains().to_dict())
     resp["Access-Control-Allow-Origin"] = "*"
     return resp
+
+
+def getTopETFs(request):
+    response_data = {}
+    resp = JsonResponse(get_top_etfs().to_dict())
+    resp["Access-Control-Allow-Origin"] = "*"
+    return resp
+
+
+def getFutures(request):
+    response_data = {}
+    resp = JsonResponse(get_futures().to_dict())
+    resp["Access-Control-Allow-Origin"] = "*"
+    return resp
+
+
+def getBonds(request):
+    response_data = {}
+    resp = JsonResponse(get_bonds().to_dict())
+    resp["Access-Control-Allow-Origin"] = "*"
+    return resp
+
+
+def getOptions(request):
+    response_data = {}
+    resp = JsonResponse(get_options().to_dict())
+    resp["Access-Control-Allow-Origin"] = "*"
+    return resp
+
+
+# API gives error but tbh the data doesnt need formatting
+# def getForex(request):
+#     api = "https://eservices.mas.gov.sg/api/action/datastore/search.json?resource_id=95932927-c8bc-4e7a-b484-68a66a24edfe&limit=5&sort=end_of_day desc"
+
+#     with urllib.request.urlopen(api) as url:
+#         data = json.loads(url.read().decode())
+#     resp = JsonResponse(data)
+#     resp["Access-Control-Allow-Origin"] = "*"
+#     return resp
+
 
 import urllib.request, json 
 from .api_key import *
@@ -46,3 +86,9 @@ def getcompanydata(request):
     resp = JsonResponse(data)
     resp["Access-Control-Allow-Origin"] = "*"
     return resp
+
+def testend(request):
+    if request.method == "GET":
+        ticker = request.GET.get("ticker")
+
+
