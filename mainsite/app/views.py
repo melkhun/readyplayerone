@@ -11,15 +11,19 @@ from django.http import JsonResponse
 from .scrape import *
 def gettopgains(request):
     response_data = {}
-    print(get_top_gains())
-    return JsonResponse(get_top_gains().to_dict())
+    # print(get_top_gains())
+    resp = JsonResponse(get_top_gains().to_dict())
+    resp["Access-Control-Allow-Origin"] = "*"
+    return resp
 
 import urllib.request, json 
 from .api_key import *
 def getnews(request):
     with urllib.request.urlopen("https://newsapi.org/v2/top-headlines?country=sg&category=business&apiKey=" + NEWS_API) as url:
         data = json.loads(url.read().decode())
-    return JsonResponse(data)
+    resp = JsonResponse(data)
+    resp["Access-Control-Allow-Origin"] = "*"
+    return resp
 
 
 def getcompanysymbol(request):
@@ -29,7 +33,9 @@ def getcompanysymbol(request):
             data = json.loads(url.read().decode())
     else:
         data = {}
-    return JsonResponse(data)
+    resp = JsonResponse(data)
+    resp["Access-Control-Allow-Origin"] = "*"
+    return resp
 
 def getcompanydata(request):
     if request.method == "GET":
@@ -38,4 +44,6 @@ def getcompanydata(request):
             data = json.loads(url.read().decode())
     else:
         data = {}
-    return JsonResponse(data)
+    resp = JsonResponse(data)
+    resp["Access-Control-Allow-Origin"] = "*"
+    return resp

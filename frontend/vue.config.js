@@ -1,9 +1,9 @@
 const GoogleFontsPlugin = require("google-fonts-webpack-plugin");
 
-module.exports = {
+module.exports = {devServer: {
+  proxy: 'https://localhost:8888'
+},
   "transpileDependencies": [
     "vuetify"
-  ], devServer: {
-    proxy: 'https://localhost:8888'
-}
+  ], 
 }

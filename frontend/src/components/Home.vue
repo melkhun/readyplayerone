@@ -82,7 +82,7 @@
     }),
 
     mounted (){
-      // this.newsdata = apis.getNews()
+      // this.getNews()
     },
 
     methods: {
@@ -96,6 +96,14 @@
           ? this.length - 1
           : this.onboarding - 1
       },
+      // async getNews() {
+      //   try {
+      //     var resp = await apis.getNews()
+      //     console.log(resp)
+      //   } catch(e) {
+      //     console.error(e)
+      //   }
+      // },
     },
   }
 </script>
