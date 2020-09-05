@@ -44,10 +44,18 @@ def testdashboard(request):
 
 from django.http import JsonResponse
 from .scrape import *
-def toptengains(request):
+def gettopgains(request):
     response_data = {}
     print(get_top_gains())
     return JsonResponse(get_top_gains().to_dict())
+
+import urllib.request, json 
+from .api_key import NEWS_API
+def getnews(request):
+    with urllib.request.urlopen("https://newsapi.org/v2/top-headlines?country=sg&category=business&apiKey=" + NEWS_API) as url:
+        data = json.loads(url.read().decode())
+    return JsonResponse(data)
+
 
 # accounts views
 from django.contrib.auth.forms import UserCreationForm

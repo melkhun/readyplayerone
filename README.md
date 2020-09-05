@@ -3,10 +3,11 @@ For Ellipsis Tech Series Hackathon 2020 - Team Ready Player One
 
 #### Things needed to runserver
 pip install django
+
 pip install requests-html
+
 pip install pandas
 
-pip install newsapi-python
 pip install django_plotly_dash
 pip install channels daphne redis django-redis channels-redis
 
