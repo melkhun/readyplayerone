@@ -226,6 +226,7 @@ export default {
 
 .output-style {
   font-size: 3em;
+  padding: 40px 40px 20px 40px;
 }
 
 .calculator-form {
