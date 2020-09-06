@@ -91,9 +91,11 @@ def testend(request):
     if request.method == "GET":
         ticker = request.GET.get("ticker")
 
-def getselectedquickstart(request):
-    if request.method == "GET":
-        symbol = request.GET.get("symbol")
+def postselectedquickstart(request):
+    if request.method == "POST":
+        # username = request.POST["username"]
+        json_data = request.POST["json_data"]
+        # insert saving of data into model here
         data = {"status": "success"}
     else:
         data = {"status":"error"}

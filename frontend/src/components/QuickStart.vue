@@ -115,16 +115,12 @@
             </v-tab-item> -->
           </v-tabs>
 
-          <div :v-if="currentTab==4">
-            <p v-for="(k,v) of topGains" :key="k">{{ k }} {{v}}:</p>
-          </div>
-
           <!--samantha code here-->
 
           <v-data-table
             v-model="selected"
             :headers="headers"
-            :items="desserts"
+            :items="tableContent"
             :single-select="singleSelect"
             item-key="name"
             show-select
@@ -244,28 +240,17 @@ export default {
     singleSelect: false,
     selected: [],
     headers: [
-      {
-        text: "Dessert (100g serving)",
-        align: "start",
-        sortable: false,
-        value: "name",
-      },
-      { text: "Calories", value: "calories" },
-      { text: "Fat (g)", value: "fat" },
-      // { text: "Carbs (g)", value: "carbs" },
-      // { text: "Protein (g)", value: "protein" },
-      // { text: "Iron (%)", value: "iron" },
+      { text: "Symbol", value: "symbol" },
+      { text: "Name", value: "name" },
+      { text: "Price (Intraday)", value: "price" },
+      { text: "Change", value: "change" },
+      { text: "% Change", value: "pChange" },
+      { text: "Volume", value: "volume" },
+      { text: "Avg Vol (3 month)", value: "aVolume" },
+      { text: "Market Cap", value: "cap" },
+      { text: "PE Ratio (TTM)", value: "ratio" },
     ],
-    desserts: [
-      {
-        name: "Frozen Yogurt",
-        calories: 159,
-        fat: 6.0,
-        // carbs: 24,
-        // protein: 4.0,
-        // iron: "1%",
-      },
-    ],
+    tableContent: [],
   }),
   computed: {
     highCapital() {
@@ -292,12 +277,16 @@ export default {
     },
   },
   mounted() {
-    this.getTopGains()
+    
   },
   methods: {
     handleSubmit() {
-      console.log(this.recommendation);
       this.showResult = true;
+      if (this.recommendation[0] == 4) {
+        this.getTopGains()
+      } else {
+        this.tableContent = []
+      }
     },
     goBack() {
       this.showResult = false;
@@ -308,20 +297,22 @@ export default {
     async getTopGains() {
       try {
         var resp = await getTopGains()
-        resp = JSON.parse(`${resp}`)
-        // resp = this.topGains
-
         var len = Object.keys(resp.Symbol).length
         var tmp = []
         for (var i=0; i<len; i++) {
           tmp.push({
-            name: resp.Symbol[i],
-            calories: resp.Name[i]
+            symbol: resp["Symbol"][i],
+            name: resp["Name"][i],
+            price: resp["Price (Intraday)"][i],
+            change: resp["Change"][i],
+            pChange: resp["% Change"][i],
+            volume: resp["Volume"][i],
+            aVolume: resp["Avg Vol (3 month)"][i],
+            cap: resp["Market Cap"][i],
+            ratio: resp["PE Ratio (TTM)"][i],
           })
         }
-        this.desserts = tmp
-        console.log(tmp)
-        this.getCompanyData('TLVLF')
+        this.tableContent = tmp
       } catch(e) {
         console.error(e)
       }
@@ -329,14 +320,18 @@ export default {
     async getCompanyData() {
       try {
         var resp = await getCompanyData()
-        // resp = JSON.parse(`${resp}`)
         console.log(resp)
       } catch(e) {
         console.error(e)
       }
     },
     updateTable(id) {
-      console.log(id)
+      this.currentTab = id
+      if (this.currentTab == 4) {
+        this.getTopGains()
+      } else {
+        this.tableContent = []
+      }
     }
   },
 };
