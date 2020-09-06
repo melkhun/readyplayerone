@@ -91,8 +91,8 @@ export default {
       this.onboarding =
         this.onboarding - 1 < 0 ? this.length - 1 : this.onboarding - 1;
     },
-  },
-};
+  }
+
 </script>
 
 <style scoped>
