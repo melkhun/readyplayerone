@@ -6,24 +6,13 @@
         <span class="text-blue"
           ><h1><b>Your Followed Portfolio Overview</b></h1></span
         ><br />
-
-        <div>
-          <div class="grid">
-            <ChartBar />
-            <ChartDoughnut />
-            <ChartLine />
-          </div>
-        </div>
-
-        <!--Donut-->
         
   <div>
     <h1>Chart Demo</h1>
 
     <div class="grid">
-      <ChartBar />
-      <ChartDoughnut :countEtf="countEtf" :countBond="countBond" :countFuture="countFuture" :countOption="countOption" :countEquity="countEquity"/>
-      <ChartLine />
+      <ChartDoughnut :countEtf="countEtf" :countBond="countBond" :countFuture="countFuture" :countOption="countOption" :countEquity="countEquity" />
+
     </div>
   </div>
 
@@ -33,12 +22,7 @@
 
         <div>
           <h1>Chart Demo</h1>
-          <div v-if="assets" style="text-align:left;">
-          <h2><b>Assets</b></h2>
-          <hr>
-        </div>
-        </div>
-
+      </div>
         <div>
           <div v-if="assets" style="text-align:left;">
             <h2><b>Assets</b></h2>
@@ -209,6 +193,7 @@ export default {
         };
         console.log(data);
       }
+      
     },
   },
 };
