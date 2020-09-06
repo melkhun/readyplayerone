@@ -68,7 +68,7 @@ export async function getOptions() {
 export async function getTopETFs() {
   const options = {
     method: 'get',
-    url: base_url + '/getOptions'
+    url: base_url + '/getTopETFs'
   }
   let response = await axios(options)
   return response.data

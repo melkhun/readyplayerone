@@ -9,6 +9,7 @@
             <v-list-item-title float-left style="color:white">READY PLAYER 1</v-list-item-title>
             <v-list-item-subtitle style="color:white">Financially Ready in 3, 2, 1</v-list-item-subtitle>
           </v-list-item-content>
+          
    
 
 
