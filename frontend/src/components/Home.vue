@@ -71,7 +71,7 @@ export default {
     articles: [],
   }),
   mounted() {
-    // this.getNews();
+    this.getNews();
   },
   methods: {
     async getNews() {
