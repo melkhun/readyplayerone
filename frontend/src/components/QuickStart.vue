@@ -133,7 +133,9 @@
                 class="pa-3"
               ></v-switch>
             </template>
+
           </v-data-table>
+          <v-btn @click="addSelected">Add to Portfolio</v-btn>
 
           <div class="button-style">
             <v-btn
@@ -154,10 +156,12 @@
 </template>
 
 <script>
-import { getTopGains, getCompanyData, getFutures, getBonds, getTopETFs, getOptions } from '../api'
+import { getTopGains, getCompanyData, getFutures, getBonds, getTopETFs, getOptions, addToPortfolio } from '../api'
+import { Auth } from 'aws-amplify';
 
 export default {
   data: () => ({
+    username: null,
     name: null,
     age: null,
     risk: null,
@@ -239,6 +243,7 @@ export default {
     ],
     singleSelect: false,
     selected: [],
+    selectedCat: [],
     headers: [],
     tableContent: [],
   }),
@@ -267,9 +272,36 @@ export default {
     },
   },
   mounted() {
-    
+    this.getUser()
   },
   methods: {
+    async getUser() {
+      let user = await Auth.currentAuthenticatedUser();
+      this.username = user['username'];
+    },
+    
+    async addToPortfolio(data) {
+      try {
+        var resp = await addToPortfolio(data);
+        console.log(resp)
+      } catch(e) {
+        console.log(e)
+      }
+    },
+
+    addSelected() {
+      console.log(this.selectedCat);
+      for (let id in this.selected) {
+        const data = {
+          category: this.selectedCat,
+          symbol: this.selected[id]["symbol"],
+          username: this.username,
+        }
+        console.log(data)
+        this.addToPortfolio(data)
+      }
+    },
+
     handleSubmit() {
       if (this.amount === '' || this.amount === null || this.amount.value === 0 || 
       this.time === '' || this.time === null || this.time.value === 0 || 
@@ -279,20 +311,26 @@ export default {
         this.showResult = true;
       }
       if (this.recommendation[0] == 4) {
-        this.getTopGains()
+        this.getTopGains();
+        this.selectedCat = "STOCK";
       }
       if (this.recommendation[0] == 5) {
         this.getFutures()
+        this.selectedCat = "FUTURES";
       }
       if (this.recommendation[0] == 6) {
         this.getOptions()
+        this.selectedCat = "OPTIONS";
       }
       if (this.recommendation[0] == 7) {
         this.getTopETFs()
+        this.selectedCat = "ETFs";
       }
       if (this.recommendation[0] == 8) {
         this.getBonds()
+        this.selectedCat = "BONDS";
       }
+
 
     },
     goBack() {

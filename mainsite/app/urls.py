@@ -14,6 +14,6 @@ urlpatterns = [
     path('getnews', views.getnews, name='getnews'),
     path('getcompanysymbol', views.getcompanysymbol, name='getcompanysymbol'),
     path('getcompanydata', views.getcompanydata, name='getcompanydata'),
-    path('getselectedquickstart', views.getselectedquickstart, name='getselectedquickstart'),
+    path('addSelectedPortfolio', views.addSelectedPortfolio, name='addSelectedPortfolio'),
     path('deleteportfolioasset', views.deleteportfolioasset, name='deleteportfolioasset'),
 ]
