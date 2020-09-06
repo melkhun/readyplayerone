@@ -28,8 +28,8 @@
     >
       <v-window v-model="onboarding">
         <v-window-item
-          v-for="n in length"
-          :key="`card-${n}`"
+          v-for="article of articles"
+          :key="article.url"
         >
           <v-card
             color="transparent"
@@ -39,9 +39,15 @@
               class="fill-height"
               align="center"
               justify="center"
-              tag="v-card-text"
-            >
-              Transparent themed, for background-imaged slides. Background color black added for demonstration purposes.
+            > 
+              <v-img
+                gradient="to top right, rgba(0,0,0,.3), rgba(0,0,0,.3)"
+                :src="`${article.urlToImage}`"
+              >
+                <v-card-title>
+                  <a :href="`${article.url}`">{{ article.description }}</a>
+                </v-card-title>
+              </v-img>
             </v-row>
           </v-card>
         </v-window-item>
@@ -91,13 +97,27 @@
 // import B from '@/components/B'
 // import C from '@/components/C'
 
+import { getNews } from '../api'
+
   export default {
     data: () => ({
       length: 4,
       onboarding: 0,
+      articles: []
     }),
-
+    mounted() {
+      this.getNews()
+    },
     methods: {
+      async getNews() {
+        try {
+          var resp = await getNews()
+          this.articles = resp.articles
+          console.log(this.articles)
+        } catch(e) {
+          console.error(e)
+        }
+      },
       next () {
         this.onboarding = this.onboarding + 1 === this.length
           ? 0
