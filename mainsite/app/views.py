@@ -97,8 +97,9 @@ def postselectedquickstart(request):
     if request.method == "POST":
         json_data = request.POST["json_data"]
         # saving data
-        category = ""
-        symbol = ""
+        username = "blackpink"
+        category = "bonds"
+        symbol = "GOOG"
         data = {"status": "success"}
     else:
         data = {"status":"error"}
@@ -110,8 +111,9 @@ def deleteportfolioasset(request):
     if request.method == "POST":
         json_data = request.POST["json_data"]
         # deleting data
-        category = ""
-        symbol = ""
+        username = "blackpink"
+        category = "bonds"
+        symbol = "GOOG"
         data = {"status": "success"}
     else:
         data = {"status":"error"}
