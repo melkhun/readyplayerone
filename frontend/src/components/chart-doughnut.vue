@@ -3,11 +3,11 @@
     <div class="card-body">
       <h2 class="card-title">Breakdown of Instrument Types</h2>
 
-      {{countEtf}}
+      <!-- {{countEtf}}
       {{countBond}}
       {{countFuture}}
       {{countOption}}
-      {{countEquity}}
+      {{countEquity}} -->
     </div>
     <div class="card-img-bottom">
       <chartjs-doughnut

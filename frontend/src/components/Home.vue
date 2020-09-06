@@ -91,8 +91,8 @@ import { getNews } from "../api";
 
 export default {
   data: () => ({
-    length: 4,
-    onboarding: 0,
+    length: 10,
+    onboarding: 1,
     articles: [],
   }),
   mounted() {

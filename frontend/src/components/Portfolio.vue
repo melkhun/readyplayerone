@@ -8,7 +8,7 @@
         ><br />
         
   <div>
-    <h1>Chart Demo</h1>
+    <h1></h1>
 
     <div class="grid">
       <ChartDoughnut :countEtf="countEtf" :countBond="countBond" :countFuture="countFuture" :countOption="countOption" :countEquity="countEquity" />
