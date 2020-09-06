@@ -1,12 +1,13 @@
 <template>
-  <div class="Quickstart">
-    <v-card flat class="block-card">
-      <!-- input -->
-      <v-card-text class="text-center">
-        <span class="text-blue"
-          ><h1><b>Your Portfolio Overview</b></h1></span
-        ><br />
+  <div class="Portfolio ">
 
+    <v-card flat class="block-card">
+
+    <!-- input -->
+      <v-card-text class="text-center">
+
+        <span class="text-blue"><h1><b>Your Portfolio Overview</b></h1></span><br>
+        
         To insert chart of user here
 
       <div v-if="assets" style="text-align:left;">
@@ -46,42 +47,54 @@
       </div>
       </v-card-text>
 
-      <div>
+      <!--Apex Chart--->
+        <div>
         <div class="chart-wrap">
           <div id="chart">
-            <apexchart
-              type="donut"
-              width="380"
-              :options="chartOptions"
-              :series="series"
-            ></apexchart>
-          </div>
+        <apexchart type="donut" width="380" :options="chartOptions" :series="series"></apexchart>
+      </div>
         </div>
-
+      
         <div class="actions">
-          <button @click="appendData">
+          <button
+              
+              
+              @click="appendData">
             + ADD
           </button>
-
-          <button @click="removeData">
+          
+          <button
+              
+              
+              @click="removeData">
             - REMOVE
           </button>
-
-          <button @click="randomize">
+          
+          <button
+              
+              
+              @click="randomize">
             RANDOMIZE
           </button>
-
-          <button @click="reset">
+          
+          <button
+              
+              
+              @click="reset">
             RESET
           </button>
         </div>
       </div>
+      </v-card-text>
 
-      <!-- output -->
+    <!-- output --> 
+
     </v-card>
+
   </div>
 </template>
 
+<script src="https://cdn.jsdelivr.net/npm/apexcharts"></script>
 <script>
 
 import VueApexCharts from 'vue-apexcharts'
@@ -139,25 +152,10 @@ export default {
       arr.push(Math.floor(Math.random() * (100 - 1 + 1)) + 1);
       this.series = arr;
     },
-
-    removeData: function() {
-      if (this.series.length === 1) return;
-      var arr = this.series.slice();
-      arr.pop();
-      this.series = arr;
-    },
-
-    randomize: function() {
-      this.series = this.series.map(function() {
-        return Math.floor(Math.random() * (100 - 1 + 1)) + 1;
-      });
-    },
-
-    reset: function() {
-      this.series = [44, 55, 13, 33];
+    mounted () {
     },
   },
-};
+}
 </script>
 
 <style scoped lang="scss">
