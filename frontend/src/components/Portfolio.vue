@@ -37,6 +37,7 @@
           <h2><b>Assets</b></h2>
           <hr>
         </div>
+        </div>
 
         <div>
           <div v-if="assets" style="text-align:left;">
