@@ -176,27 +176,27 @@ export default {
         name: "No recommendations found",
         desc: "Sorry, we don't have anything suitable for you yet.",
       },
-      {
-        id: 1,
-        name: "STOCK",
-        desc:
-          "Mr Worldwide, buy and sell currencies of your choice. Take a long position to buy when you expect the prices to go up, short sell when you expect prices to go down.",
-      },
-      {
-        id: 2,
-        name: "CFD",
-        desc:
-          "CFD in short for Contract For Difference. You don’t actually own the stock but you borrow it from a 3rd party to take that position. Pay only a percentage of the full cost of the underlying share, but get the same exposure.",
-      },
-      {
-        id: 3,
-        name: "COMMODITIES",
-        desc:
-          "Our bread and butter. Commodities are things like grains, gold, beef, oil, and natural gas. There are many ways to get into commodities, through and ETF, mutual fund, futures or buying the commodities itself.  As prices of commodities tend to move in opposition to stocks, it is a good “resistive” instrument to consider.",
-      },
+      // {
+      //   id: 1,
+      //   name: "FOREX",
+      //   desc:
+      //     "Mr Worldwide, buy and sell currencies of your choice. Take a long position to buy when you expect the prices to go up, short sell when you expect prices to go down.",
+      // },
+      // {
+      //   id: 2,
+      //   name: "CFD",
+      //   desc:
+      //     "CFD in short for Contract For Difference. You don’t actually own the stock but you borrow it from a 3rd party to take that position. Pay only a percentage of the full cost of the underlying share, but get the same exposure.",
+      // },
+      // {
+      //   id: 3,
+      //   name: "COMMODITIES",
+      //   desc:
+      //     "Our bread and butter. Commodities are things like grains, gold, beef, oil, and natural gas. There are many ways to get into commodities, through and ETF, mutual fund, futures or buying the commodities itself.  As prices of commodities tend to move in opposition to stocks, it is a good “resistive” instrument to consider.",
+      // },
       {
         id: 4,
-        name: "EQUITIES",
+        name: "STOCK",
         desc:
           "When a company offers equities, it's selling partial ownership in the company. The share you purchased go up or down with the value of the company. Receive dividends from the company when it is performing well for holding on to the shares.",
       },
@@ -224,18 +224,18 @@ export default {
         desc:
           "Bonds can be issued by companies or governments and generally pay a stated interest rate. The interest rate is the discount you get when purchasing the bond, for a 10% interest bond, you buy at $900 and get $1000 when it matures. How simple?",
       },
-      {
-        id: 9,
-        name: "MUTUAL FUNDS",
-        desc:
-          "It’s more fun with company. Pool your investments with other investors to invest in a pool of assets with mutual funds. Like ETFs, you can have exposure to various asset classes with mutual funds. Mutual funds unlike ETFs are offered by fund companies and are priced daily.",
-      },
-      {
-        id: 10,
-        name: "REITS",
-        desc:
-          "A REIT is a corporation, trust, or association that invests directly in income-producing real estate and is traded like a stock.",
-      },
+      // {
+      //   id: 9,
+      //   name: "MUTUAL FUNDS",
+      //   desc:
+      //     "It’s more fun with company. Pool your investments with other investors to invest in a pool of assets with mutual funds. Like ETFs, you can have exposure to various asset classes with mutual funds. Mutual funds unlike ETFs are offered by fund companies and are priced daily.",
+      // },
+      // {
+      //   id: 10,
+      //   name: "REITS",
+      //   desc:
+      //     "A REIT is a corporation, trust, or association that invests directly in income-producing real estate and is traded like a stock.",
+      // },
     ],
     singleSelect: false,
     selected: [],
@@ -250,8 +250,8 @@ export default {
       return this.time > 3;
     },
     recommendation() {
-      if (!this.highCapital && !this.longHorizon && this.risk == "High")
-        return [1, 2, 3]; //forex, CFD, commodities
+      // if (!this.highCapital && !this.longHorizon && this.risk == "High")
+      //   return [1, 2, 3]; //forex, CFD, commodities
       if (!this.longHorizon && this.risk == "Medium") return [4]; //equities
       if (this.longHorizon && this.risk == "High") return [5]; //futures
       if (!this.highCapital && this.longHorizon && this.risk == "Medium")
@@ -259,10 +259,10 @@ export default {
       if (!this.highCapital && !this.longHorizon && this.risk == "Low")
         return [7]; //ETFs
       if (this.longHorizon && this.risk == "Low") return [8]; //bonds
-      if (!this.highCapital && this.longHorizon && this.risk == "Medium")
-        return [9]; //mutual funds
-      if (!this.highCapital && this.longHorizon && this.risk == "Low")
-        return [10]; //REITS
+      // if (!this.highCapital && this.longHorizon && this.risk == "Medium")
+      //   return [9]; //mutual funds
+      // if (!this.highCapital && this.longHorizon && this.risk == "Low")
+      //   return [10]; //REITS
       return [0];
     },
   },

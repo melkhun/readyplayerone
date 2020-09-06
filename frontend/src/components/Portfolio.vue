@@ -55,19 +55,12 @@
             v-model="selected"
             :headers="headers"
             :items="tableContent"
-            :single-select="singleSelect"
-            item-key="symbol"
+            :item-key="$symbol"
             show-select
             class="elevation-1"
           >
-            <template v-slot:top>
-              <v-switch
-                v-model="singleSelect"
-                label="Single select"
-                class="pa-3"
-              ></v-switch>
-            </template>
           </v-data-table>
+          <v-btn @click="deleteSelected">Delete</v-btn>
         </div>
 
 
@@ -100,7 +93,9 @@ export default {
       { text: "PE Ratio (TTM)", value: "ratio" },
     ],
     tableContent: [],
-    items: []
+    items: [],
+    selected: [],
+    selectedData: []
   }),
   components: {
     ChartDoughnut,
@@ -137,8 +132,16 @@ export default {
       } catch (e) {
         console.error(e);
       }
-      
     },
+    deleteSelected() {
+      for (let id in this.selected) {
+        const data = {
+          category: this.selected[id]["type"],
+          symbol: this.selected[id]["symbol"],
+        }
+        console.log(data)
+      }
+    }
   }
 };
 </script>
