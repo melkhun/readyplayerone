@@ -64,6 +64,7 @@
 <script>
 import { getNews } from "../api";
 
+<<<<<<< HEAD
   export default {
     data: () => ({
       length: 4,
@@ -96,6 +97,37 @@ import { getNews } from "../api";
     },
   
 };
+=======
+export default {
+  data: () => ({
+    length: 4,
+    onboarding: 0,
+    articles: [],
+  }),
+  mounted() {
+    // this.getNews();
+  },
+  methods: {
+    async getNews() {
+      try {
+        var resp = await getNews();
+        this.articles = resp.articles;
+        console.log(this.articles);
+      } catch (e) {
+        console.error(e);
+      }
+    },
+    next() {
+      this.onboarding =
+        this.onboarding + 1 === this.length ? 0 : this.onboarding + 1;
+    },
+    prev() {
+      this.onboarding =
+        this.onboarding - 1 < 0 ? this.length - 1 : this.onboarding - 1;
+    },
+  }
+
+>>>>>>> 3472c170d830406f31975cfa9e5fbfa7746a7229
 </script>
 
 <style scoped>

@@ -1,13 +1,12 @@
 <template>
-  <div class="Portfolio ">
-
+  <div class="Quickstart">
     <v-card flat class="block-card">
-
-    <!-- input -->
+      <!-- input -->
       <v-card-text class="text-center">
+        <span class="text-blue"
+          ><h1><b>Your Portfolio Overview</b></h1></span
+        ><br />
 
-        <span class="text-blue"><h1><b>Your Portfolio Overview</b></h1></span><br>
-        
         To insert chart of user here
 
       <div v-if="assets" style="text-align:left;">
@@ -47,17 +46,49 @@
       </div>
       </v-card-text>
 
-    <!-- output --> 
+      <div>
+        <div class="chart-wrap">
+          <div id="chart">
+            <apexchart
+              type="donut"
+              width="380"
+              :options="chartOptions"
+              :series="series"
+            ></apexchart>
+          </div>
+        </div>
 
+        <div class="actions">
+          <button @click="appendData">
+            + ADD
+          </button>
+
+          <button @click="removeData">
+            - REMOVE
+          </button>
+
+          <button @click="randomize">
+            RANDOMIZE
+          </button>
+
+          <button @click="reset">
+            RESET
+          </button>
+        </div>
+      </div>
+
+      <!-- output -->
     </v-card>
-
   </div>
 </template>
 
 <script>
 
-  export default {
-    data: () => ({
+import VueApexCharts from 'vue-apexcharts'
+
+export default {
+  data: () => ({
+    assets: true,
       dense: false,
     fixedHeader: false,
     height: 300,
@@ -69,17 +100,64 @@
         close: 159,
       },
     ],
-    assets: true,
     
-    }),
-    computed: {
+    series: [44, 55, 13, 33],
+    chartOptions: {
+      chart: {
+        width: 380,
+        type: "donut",
+      },
+      dataLabels: {
+        enabled: false,
+      },
+      responsive: [
+        {
+          breakpoint: 480,
+          options: {
+            chart: {
+              width: 200,
+            },
+            legend: {
+              show: false,
+            },
+          },
+        },
+      ],
+      legend: {
+        position: "right",
+        offsetY: 0,
+        height: 230,
+      },
     },
-    methods: {
-      
+  }),
+  computed: {
+    apexchart: VueApexCharts,
+  },
+  methods: {
+    appendData: function() {
+      var arr = this.series.slice();
+      arr.push(Math.floor(Math.random() * (100 - 1 + 1)) + 1);
+      this.series = arr;
     },
-    mounted () {
+
+    removeData: function() {
+      if (this.series.length === 1) return;
+      var arr = this.series.slice();
+      arr.pop();
+      this.series = arr;
     },
-  };
+
+    randomize: function() {
+      this.series = this.series.map(function() {
+        return Math.floor(Math.random() * (100 - 1 + 1)) + 1;
+      });
+    },
+
+    reset: function() {
+      this.series = [44, 55, 13, 33];
+    },
+  },
+};
 </script>
 
 <style scoped lang="scss">
@@ -91,7 +169,7 @@
   padding: 50px 40px 40px 40px;
 }
 .center-element >>> input {
-  text-align:center;
+  text-align: center;
   justify-content: center;
 }
 
@@ -101,12 +179,12 @@
 }
 
 .profile-text {
-  padding:10px;
-  margin-top:10px;
+  padding: 10px;
+  margin-top: 10px;
 }
 
 .transparent {
-    background-color: transparent!important;
-    border-color: transparent!important;
-  }
+  background-color: transparent !important;
+  border-color: transparent !important;
+}
 </style>
