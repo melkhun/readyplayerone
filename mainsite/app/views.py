@@ -96,10 +96,17 @@ from .models import Portfolio
 def postselectedquickstart(request):
     if request.method == "POST":
         json_data = request.POST["json_data"]
-        # saving data
+        # mock data
         username = "blackpink"
         category = "bonds"
         symbol = "GOOG"
+        # saving data
+        try:
+            portfolio_instance = Portfolio.objects.get(username=username)
+            # halp
+        except Portfolio.DoesNotExist:
+            portfolio_instance = Portfolio(username=username, category=category, symbol=symbol)
+            portfolio_instance.save()
         data = {"status": "success"}
     else:
         data = {"status":"error"}
@@ -110,10 +117,12 @@ def postselectedquickstart(request):
 def deleteportfolioasset(request):
     if request.method == "POST":
         json_data = request.POST["json_data"]
-        # deleting data
+        # mock data
         username = "blackpink"
         category = "bonds"
         symbol = "GOOG"
+        # deleting data insert below
+
         data = {"status": "success"}
     else:
         data = {"status":"error"}
