@@ -85,7 +85,6 @@
           </button>
         </div>
       </div>
-      </v-card-text>
 
     <!-- output --> 
 
