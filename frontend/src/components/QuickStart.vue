@@ -105,27 +105,26 @@
         <br />
         <v-card flat>
           <v-tabs color="deep-purple accent-4" centered>
-            <v-tab v-for="rec of recommendation" :key="rec">
+            <v-tab v-for="rec of recommendation" :key="rec" @click='updateTable(tabs[rec].id)'>
               {{ tabs[rec].name }}
             </v-tab>
-            <v-tab-item v-for="rec of recommendation" :key="rec">
+            <!-- <v-tab-item v-for="rec of recommendation" :key="rec">
               <v-card flat>
                 <v-card-text>{{ tabs[rec].desc }}</v-card-text>
               </v-card>
-            </v-tab-item>
+            </v-tab-item> -->
           </v-tabs>
-<<<<<<< HEAD
 
-          <p v-for="(k,v) of topGains" :key="k">{{ k }} {{v}}:</p>
-          
+          <div :v-if="currentTab==4">
+            <p v-for="(k,v) of topGains" :key="k">{{ k }} {{v}}:</p>
+          </div>
+
           <!--samantha code here-->
-=======
->>>>>>> 8dc307691cd94bcb48b41a1e2085d872c6696f19
 
           <v-data-table
             v-model="selected"
             :headers="headers"
-            :items="instruments"
+            :items="desserts"
             :single-select="singleSelect"
             item-key="name"
             show-select
@@ -174,6 +173,7 @@ export default {
       "Symbol": {"0": "TLVLF", "1": "BNKXF", "2": "CRYYF", "3": "PTKFF", "4": "CAIXY", "5": "BNDSY", "6": "CHWRF", "7": "CYDY", "8": "BIGC", "9": "WKHS"},
       "Name": {"0": "Minds + Machines Group Limited", "1": "Bankia, S.A."}
     },
+    currentTab: null,
     tabs: [
       {
         id: 0,
@@ -182,7 +182,7 @@ export default {
       },
       {
         id: 1,
-        name: "FOREX",
+        name: "STOCK",
         desc:
           "Mr Worldwide, buy and sell currencies of your choice. Take a long position to buy when you expect the prices to go up, short sell when you expect prices to go down.",
       },
@@ -329,7 +329,6 @@ export default {
       this.risk = null;
       this.time = null;
     },
-<<<<<<< HEAD
     async getTopGains() {
       try {
         var resp = await getTopGains()
@@ -341,8 +340,9 @@ export default {
         console.error(e)
       }
     },
-=======
->>>>>>> 8dc307691cd94bcb48b41a1e2085d872c6696f19
+    updateTable(id) {
+      console.log(id)
+    }
   },
 };
 </script>
