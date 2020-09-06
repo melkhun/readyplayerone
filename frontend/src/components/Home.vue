@@ -106,14 +106,14 @@ import { getNews } from '../api'
       articles: []
     }),
     mounted() {
-      this.getNews()
+      // this.getNews()
     },
     methods: {
       async getNews() {
         try {
           var resp = await getNews()
           this.articles = resp.articles
-          console.log(this.articles)
+          // console.log(this.articles)
         } catch(e) {
           console.error(e)
         }
