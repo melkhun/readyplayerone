@@ -257,18 +257,18 @@ export default {
     recommendation() {
       // if (!this.highCapital && !this.longHorizon && this.risk == "High")
       //   return [1, 2, 3]; //forex, CFD, commodities
-      if (!this.longHorizon && this.risk == "Medium") return [4]; //equities
-      if (this.longHorizon && this.risk == "High") return [5]; //futures
+      if (!this.longHorizon && this.risk == "Medium") return [1]; //equities
+      if (this.longHorizon && this.risk == "High") return [2]; //futures
       if (!this.highCapital && this.longHorizon && this.risk == "Medium")
-        return [6]; //options
+        return [3]; //options
       if (!this.highCapital && !this.longHorizon && this.risk == "Low")
-        return [7]; //ETFs
-      if (this.longHorizon && this.risk == "Low") return [8]; //bonds
+        return [4]; //ETFs
+      if (this.longHorizon && this.risk == "Low") return [5]; //bonds
       // if (!this.highCapital && this.longHorizon && this.risk == "Medium")
       //   return [9]; //mutual funds
       // if (!this.highCapital && this.longHorizon && this.risk == "Low")
       //   return [10]; //REITS
-      return [4];
+      return [1];
     },
   },
   mounted() {
