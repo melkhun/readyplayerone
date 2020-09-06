@@ -114,18 +114,15 @@
               </v-card>
             </v-tab-item>
           </v-tabs>
-<<<<<<< HEAD
 
           <p v-for="(k,v) of topGains" :key="k">{{ k }} {{v}}:</p>
           
           <!--samantha code here-->
-=======
->>>>>>> 8dc307691cd94bcb48b41a1e2085d872c6696f19
 
           <v-data-table
             v-model="selected"
             :headers="headers"
-            :items="instruments"
+            :items="desserts"
             :single-select="singleSelect"
             item-key="name"
             show-select
@@ -329,7 +326,6 @@ export default {
       this.risk = null;
       this.time = null;
     },
-<<<<<<< HEAD
     async getTopGains() {
       try {
         var resp = await getTopGains()
@@ -341,8 +337,6 @@ export default {
         console.error(e)
       }
     },
-=======
->>>>>>> 8dc307691cd94bcb48b41a1e2085d872c6696f19
   },
 };
 </script>

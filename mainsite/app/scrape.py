@@ -1,6 +1,7 @@
 from requests_html import HTMLSession
 import pandas as pd
 import numpy
+import math
 
 
 def force_float(elt):
@@ -30,9 +31,11 @@ def changeVals(fields_to_change, df):
 
             df[field] = df[field].map(lambda x: x if type(x) == float else
                                     force_float(x.strip("M")) * 1000000)
-
-
     return fields_to_change
+
+
+def removeNan(field, df):
+    df[field] = df[field].map(lambda x: "NA" if math.isnan(x) else x)
 
 
 def get_top_gains():
@@ -44,6 +47,8 @@ def get_top_gains():
     fields_to_change = [x for x in df.columns.tolist() if "Vol" in x \
                         or x == "Market Cap"]
     fields_to_change = changeVals(fields_to_change, df)
+
+    fields_to_change = removeNan("PE Ratio (TTM)", df)
 
     return df
 
