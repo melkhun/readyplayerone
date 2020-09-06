@@ -42,7 +42,7 @@
       <ChartLine />
     </div>
   </div>
-        <!--Chart--->
+
         <div>
           <h1>Chart Demo</h1>
           <div v-if="assets" style="text-align:left;">
