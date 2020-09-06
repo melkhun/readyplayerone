@@ -154,7 +154,7 @@
 </template>
 
 <script>
-import { getTopGains, getCompanyData } from '../api'
+import { getTopGains, getCompanyData, getFutures, getBonds, getTopETFs, getOptions } from '../api'
 
 export default {
   data: () => ({
@@ -293,6 +293,46 @@ export default {
       this.amount = null;
       this.risk = null;
       this.time = null;
+    },
+
+    async getFutures() {
+      try {
+        var resp = await getFutures()
+        this.futures = resp
+        console.log(this.futures.Change)
+      } catch(e) {
+        console.error(e)
+      }
+    },
+
+    async getBonds() {
+      try {
+        var resp = await getBonds()
+        // this.bonds = resp
+        console.log(resp)
+      } catch(e) {
+        console.error(e)
+      }
+    },
+
+    async getTopETFs() {
+      try {
+        var resp = await getTopETFs()
+        // this.bonds = resp
+        console.log(resp)
+      } catch(e) {
+        console.error(e)
+      }
+    },
+
+    async getOptions() {
+      try {
+        var resp = await getOptions()
+        // this.bonds = resp
+        console.log(resp)
+      } catch(e) {
+        console.error(e)
+      }
     },
     async getTopGains() {
       try {
