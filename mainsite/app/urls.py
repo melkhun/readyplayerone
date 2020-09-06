@@ -16,4 +16,5 @@ urlpatterns = [
     path('getcompanydata', views.getcompanydata, name='getcompanydata'),
     path('addSelectedPortfolio', views.addSelectedPortfolio, name='addSelectedPortfolio'),
     path('deleteportfolioasset', views.deleteportfolioasset, name='deleteportfolioasset'),
+    path('getUserPortfolio', views.getUserPortfolio, name='getUserPortfolio'),
 ]

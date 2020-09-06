@@ -255,20 +255,20 @@ export default {
       return this.time > 3;
     },
     recommendation() {
+      let results = [1]
       // if (!this.highCapital && !this.longHorizon && this.risk == "High")
       //   return [1, 2, 3]; //forex, CFD, commodities
-      if (!this.longHorizon && this.risk == "Medium") return [1]; //equities
-      if (this.longHorizon && this.risk == "High") return [2]; //futures
-      if (!this.highCapital && this.longHorizon && this.risk == "Medium")
-        return [3]; //options
-      if (!this.highCapital && !this.longHorizon && this.risk == "Low")
-        return [4]; //ETFs
-      if (this.longHorizon && this.risk == "Low") return [5]; //bonds
+      if (!this.longHorizon && this.risk == "Medium") results = [1]; //equities
+      if (this.longHorizon && this.risk == "High") results = [2]; //futures
+      if (!this.highCapital && this.longHorizon && this.risk == "Medium") results = [3]; //options
+      if (!this.highCapital && !this.longHorizon && this.risk == "Low") results = [4]; //ETFs
+      if (this.longHorizon && this.risk == "Low") results = [5]; //bonds
       // if (!this.highCapital && this.longHorizon && this.risk == "Medium")
       //   return [9]; //mutual funds
       // if (!this.highCapital && this.longHorizon && this.risk == "Low")
       //   return [10]; //REITS
-      return [1];
+      // return [1];
+      return results;
     },
   },
   mounted() {
@@ -310,23 +310,23 @@ export default {
       } else {
         this.showResult = true;
       }
-      if (this.recommendation[0] == 4) {
+      if (this.recommendation[0] == 1) {
         this.getTopGains();
         this.selectedCat = "STOCK";
       }
-      if (this.recommendation[0] == 5) {
+      if (this.recommendation[0] == 2) {
         this.getFutures()
         this.selectedCat = "FUTURES";
       }
-      if (this.recommendation[0] == 6) {
+      if (this.recommendation[0] == 3) {
         this.getOptions()
         this.selectedCat = "OPTIONS";
       }
-      if (this.recommendation[0] == 7) {
+      if (this.recommendation[0] == 4) {
         this.getTopETFs()
         this.selectedCat = "ETFs";
       }
-      if (this.recommendation[0] == 8) {
+      if (this.recommendation[0] == 5) {
         this.getBonds()
         this.selectedCat = "BONDS";
       }

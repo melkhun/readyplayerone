@@ -94,4 +94,13 @@ export async function addToPortfolio(data) {
   return response.data
 }
 
+export async function getPortfolio(data) {
+  const options = {
+    method: 'get',
+    params: data,
+    url: base_url + '/getUserPortfolio'
+  }
+  let response = await axios(options)
+  return response.data
+}
 

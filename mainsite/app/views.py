@@ -2,7 +2,9 @@ from django.shortcuts import render
 from plotly.offline import plot
 import plotly.graph_objects as go
 
+from django.forms.models import model_to_dict
 from django.contrib.auth.decorators import login_required
+
 
 # Create your views here.
 
@@ -117,16 +119,14 @@ def deleteportfolioasset(request):
         category = request.GET.get("category")
         symbol = request.GET.get("symbol")
         username = request.GET.get("username")
+
+        print('deleteing for', category, symbol)
+
         if category == "Common Stock":
-            category = "equities"
+            category = "STOCK"
 
         portfolio_instance = Portfolio.objects.get(username=username, symbol=symbol, category=category)
         portfolio_instance.delete()
-        # debugging stuff
-        # print(category)
-        # print(symbol)
-        # print (username)
-        # deleting data insert below
 
         data = {"status": "success"}
     else:
@@ -134,3 +134,25 @@ def deleteportfolioasset(request):
     resp = JsonResponse(data)
     resp["Access-Control-Allow-Origin"] = "*"
     return resp
+
+
+def getUserPortfolio(request):
+    if request.method == "GET":
+        username = request.GET.get("username")
+        results = []
+
+        try:
+            allPortfolio = Portfolio.objects.filter(username=username)
+            for eachRow in allPortfolio:
+                eachRowDict = model_to_dict(eachRow)
+                results.append(eachRowDict['symbol'])
+            data = {
+                "status": "success",
+                "symbols": results
+            }
+        except:
+            data = {"status":"user does not exist, or portfolio is empty"}
+
+        resp = JsonResponse(data)
+        resp["Access-Control-Allow-Origin"] = "*"
+        return resp
