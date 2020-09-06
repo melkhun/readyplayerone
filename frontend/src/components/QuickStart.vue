@@ -114,24 +114,44 @@
               </v-card>
             </v-tab-item>
           </v-tabs>
+<<<<<<< HEAD
 
           <p v-for="(k,v) of topGains" :key="k">{{ k }} {{v}}:</p>
           
           <!--samantha code here-->
+=======
+>>>>>>> 8dc307691cd94bcb48b41a1e2085d872c6696f19
+
+          <v-data-table
+            v-model="selected"
+            :headers="headers"
+            :items="instruments"
+            :single-select="singleSelect"
+            item-key="name"
+            show-select
+            class="elevation-1"
+          >
+            <template v-slot:top>
+              <v-switch
+                v-model="singleSelect"
+                label="Single select"
+                class="pa-3"
+              ></v-switch>
+            </template>
+          </v-data-table>
 
           <div class="button-style">
-          <v-btn
-            class="justify-center white--text"
-            color="rgb(0, 0, 255)"
-            min-width="300"
-            min-height="50"
-            x-large
-            @click="goBack"
-          >
-            START OVER
-          </v-btn>
+            <v-btn
+              class="justify-center white--text"
+              color="rgb(0, 0, 255)"
+              min-width="300"
+              min-height="50"
+              x-large
+              @click="goBack"
+            >
+              START OVER
+            </v-btn>
           </div>
-        
         </v-card>
       </v-card-text>
     </v-card>
@@ -158,7 +178,7 @@ export default {
       {
         id: 0,
         name: "No recommendations found",
-        desc: "idk we cant help",
+        desc: "Sorry, we don't have anything suitable for you yet.",
       },
       {
         id: 1,
@@ -221,6 +241,55 @@ export default {
           "A REIT is a corporation, trust, or association that invests directly in income-producing real estate and is traded like a stock.",
       },
     ],
+    singleSelect: false,
+    selected: [],
+    headers: [
+      {
+        text: "Dessert (100g serving)",
+        align: "start",
+        sortable: false,
+        value: "name",
+      },
+      { text: "Calories", value: "calories" },
+      { text: "Fat (g)", value: "fat" },
+      { text: "Carbs (g)", value: "carbs" },
+      { text: "Protein (g)", value: "protein" },
+      { text: "Iron (%)", value: "iron" },
+    ],
+    desserts: [
+      {
+        name: "Frozen Yogurt",
+        calories: 159,
+        fat: 6.0,
+        carbs: 24,
+        protein: 4.0,
+        iron: "1%",
+      },
+      {
+        name: "Ice cream sandwich",
+        calories: 237,
+        fat: 9.0,
+        carbs: 37,
+        protein: 4.3,
+        iron: "1%",
+      },
+      {
+        name: "Eclair",
+        calories: 262,
+        fat: 16.0,
+        carbs: 23,
+        protein: 6.0,
+        iron: "7%",
+      },
+      {
+        name: "Cupcake",
+        calories: 305,
+        fat: 3.7,
+        carbs: 67,
+        protein: 4.3,
+        iron: "8%",
+      },
+    ],
   }),
   computed: {
     highCapital() {
@@ -260,6 +329,7 @@ export default {
       this.risk = null;
       this.time = null;
     },
+<<<<<<< HEAD
     async getTopGains() {
       try {
         var resp = await getTopGains()
@@ -271,6 +341,8 @@ export default {
         console.error(e)
       }
     },
+=======
+>>>>>>> 8dc307691cd94bcb48b41a1e2085d872c6696f19
   },
 };
 </script>
