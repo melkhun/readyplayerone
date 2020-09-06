@@ -4,7 +4,7 @@
       <!-- input -->
       <v-card-text class="text-center">
         <span class="text-blue"
-          ><h1><b>Your Portfolio Overview</b></h1></span
+          ><h1><b>Your Followed Portfolio Overview</b></h1></span
         ><br />
 
         <div>
@@ -16,7 +16,7 @@
         </div>
 
         <div class="header-style">
-          Here's a breakdown of your portfolio
+          Here's a breakdown of your followed portfolio
         </div>
 
         <div>
