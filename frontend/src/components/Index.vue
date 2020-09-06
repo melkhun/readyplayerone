@@ -6,8 +6,8 @@
             <img src="../assets/team_logov2.png" />
           </v-list-item-avatar>
           <v-list-item-content style="text-align:left;">
-            <v-list-item-title float-left>READY PLAYER 1</v-list-item-title>
-            <v-list-item-subtitle>Financially Ready in 3, 2, 1</v-list-item-subtitle>
+            <v-list-item-title float-left style="color:white">READY PLAYER 1</v-list-item-title>
+            <v-list-item-subtitle style="color:white">Financially Ready in 3, 2, 1</v-list-item-subtitle>
           </v-list-item-content>
    
 
