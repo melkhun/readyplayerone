@@ -187,7 +187,7 @@ mounted() {
 
         console.log(resp);
 
-        if (Object.keys(resp).length === 0 || resp.hasOwnProperty("Note")) {
+        if (Object.keys(resp).length === 0 || ("Note" in resp)) {
           if (this.errorMsg == null) {
             this.errorMsg = "Note: Due to the free tier API limitation, some stocks may not show values.";
           }
