@@ -263,7 +263,7 @@ export default {
       //   return [9]; //mutual funds
       // if (!this.highCapital && this.longHorizon && this.risk == "Low")
       //   return [10]; //REITS
-      return [0];
+      return [4];
     },
   },
   mounted() {

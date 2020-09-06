@@ -73,3 +73,13 @@ export async function getTopETFs() {
   let response = await axios(options)
   return response.data
 }
+
+export async function deletePortfolioAsset(data) {
+  const options = {
+    method: 'get',
+    params: data,
+    url: base_url + '/deleteportfolioasset'
+  }
+  let response = await axios(options)
+  return response.data
+}

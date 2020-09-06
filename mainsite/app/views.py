@@ -93,13 +93,14 @@ def testend(request):
 
 from .models import Portfolio
 
-def postselectedquickstart(request):
-    if request.method == "POST":
-        json_data = request.POST["json_data"]
+def getselectedquickstart(request):
+    if request.method == "GET":
+        category = request.GET.get("category")
+        symbol = request.GET.get("symbol")
+        username = request.GET.get("username")
+        if category == "Common Stock":
+            category = "equities"
         # mock data
-        username = "blackpink"
-        category = "bonds"
-        symbol = "GOOG"
         # saving data
         try:
             portfolio_instance = Portfolio.objects.get(username=username)
@@ -115,12 +116,19 @@ def postselectedquickstart(request):
     return resp
 
 def deleteportfolioasset(request):
-    if request.method == "POST":
-        json_data = request.POST["json_data"]
-        # mock data
-        username = "blackpink"
-        category = "bonds"
-        symbol = "GOOG"
+    if request.method == "GET":
+        category = request.GET.get("category")
+        symbol = request.GET.get("symbol")
+        username = request.GET.get("username")
+        if category == "Common Stock":
+            category = "equities"
+
+        portfolio_instance = Portfolio.objects.get(username=username, symbol=symbol, category=category)
+        portfolio_instance.delete()
+        # debugging stuff
+        # print(category)
+        # print(symbol)
+        # print (username)
         # deleting data insert below
 
         data = {"status": "success"}
