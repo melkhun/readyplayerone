@@ -4,6 +4,8 @@ import store from '../store.js'
 import Index from '../components/Index.vue'
 import Login from '../components/Login.vue'
 import Register from '../components/Register.vue'
+import Calculator from '../components/Calculator.vue'
+import QuickStart from '../components/QuickStart.vue'
 //import  from '../components/SignUp.vue'
 
 
@@ -29,6 +31,16 @@ let router = new Router({
       path: '/register',
       name: 'register',
       component: Register
+    },
+    {
+      path: '/calculator',
+      name: 'calculator',
+      component: Calculator
+    },
+    {
+      path: '/quickstart',
+      name: 'quickstart',
+      component: QuickStart
     },
   ]
 })
