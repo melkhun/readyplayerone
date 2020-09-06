@@ -91,6 +91,7 @@ export default {
     ],
     tableContent: [],
     items: [],
+    tableItems: {},
     selected: [],
     selectedData: [],
     errorMsg: null,
@@ -106,12 +107,11 @@ export default {
     ChartDoughnut,
   },
 mounted() {
-
     this.getUser();
     // this.getItems();
-    for (var i = 0; i < this.items.length; i++) {
-      this.getCompanyData(this.items[i]);
-    }
+    // for (var i = 0; i < this.items.length; i++) {
+    //   this.getCompanyData(this.items[i]);
+    // }
   },
 
   methods: {
@@ -123,8 +123,6 @@ mounted() {
       }
       let userData = await getPortfolio(data);
       this.tableItems = userData['symbols'];
-
-      console.log(this.tableItems);
 
       // cap at 5 due to api limit restrictions
       for (var i = 0; i < Math.min(this.tableItems.length, 5); i++) {
@@ -205,7 +203,7 @@ mounted() {
 
         console.log(resp);
 
-        if (Object.keys(resp).length === 0) {
+        if (Object.keys(resp).length === 0 || resp.hasOwnProperty("Note")) {
           if (this.errorMsg == null) {
             this.errorMsg = "Note: Due to the free tier API limitation, some stocks may not show values.";
           }
@@ -245,7 +243,7 @@ mounted() {
           symbol: this.selected[id]["symbol"],
         };
         console.log(data);
-        deletePortfolioAsset(data);
+        this.deletePortfolio(data);
         this.tableContent.splice(id, 1);
 
       }
@@ -253,7 +251,7 @@ mounted() {
 
     async deletePortfolio(data) {
       try {
-        var resp = await deletePortfolio(data);
+        var resp = await deletePortfolioAsset(data);
         console.log(resp)
       } catch(e) {
         console.log(e)
