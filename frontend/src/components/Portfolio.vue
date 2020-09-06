@@ -11,25 +11,39 @@
         To insert chart of user here
 
       <div v-if="assets" style="text-align:left;">
-        Assets
+        <h2><b>Assets</b></h2>
         <hr>
-        <table>
-        <tr>
-          <td></td>
-          <td>High</td>
-          <td>Low</td>
-          <td>Open</td>
-          <td>Close</td>
-        </tr>
-        <div v-for="(assets,index) in listofassets" :key="assets">
-          <tr>
-          <td>Assets {{index+1}}</td>
-          <td v-for="value in assets" :key="value">
-            {{value}}
-          </td>
-          </tr>
+
+        <div>
+          <v-simple-table
+                  :dense="dense"
+                  :fixed-header="fixedHeader"
+                  :height="height"
+                >
+            <template v-slot:default>
+              <thead>
+                <tr>
+                  <th></th>
+                  <th class="text-left">High</th>
+                  <th class="text-left">Low</th>
+                  <th class="text-left">Open</th>
+                  <th class="text-left">Close</th>
+                </tr>
+              </thead>
+              <tbody>
+                <tr v-for="(item, index) in desserts" :key="item.name">
+                  <td>Asset {{index + 1}}</td>
+                  <td>{{ item.high }}</td>
+                  <td>{{ item.low }}</td>
+                  <td>{{ item.open }}</td>
+                  <td>{{ item.close }}</td>
+                </tr>
+              </tbody>
+            </template>
+          </v-simple-table>
         </div>
-        </table>
+
+
       </div>
       </v-card-text>
 
@@ -41,17 +55,22 @@
 </template>
 
 <script>
+
   export default {
     data: () => ({
+      dense: false,
+    fixedHeader: false,
+    height: 300,
+    desserts: [
+      {
+        high: 'Frozen Yogurt',
+        low: 159,
+        open: 'Frozen Yogurt',
+        close: 159,
+      },
+    ],
     assets: true,
-    listofassets: [
-      [
-        'high 1',
-        'low 1',
-        'open 1',
-        'close 1',
-        ],
-      ]
+    
     }),
     computed: {
     },
