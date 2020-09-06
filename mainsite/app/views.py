@@ -122,13 +122,13 @@ def deleteportfolioasset(request):
 
         print('deleteing for', category, symbol)
 
-        if category == "Common Stock":
-            category = "STOCK"
+        try:
+            portfolio_instance = Portfolio.objects.get(username=username, symbol=symbol, category=category)
+            portfolio_instance.delete()
 
-        portfolio_instance = Portfolio.objects.get(username=username, symbol=symbol, category=category)
-        portfolio_instance.delete()
-
-        data = {"status": "success"}
+            data = {"status": "success"}
+        except:
+            data = {"status":"error"}
     else:
         data = {"status":"error"}
     resp = JsonResponse(data)
@@ -139,16 +139,16 @@ def deleteportfolioasset(request):
 def getUserPortfolio(request):
     if request.method == "GET":
         username = request.GET.get("username")
-        results = []
+        results = {}
 
         try:
             allPortfolio = Portfolio.objects.filter(username=username)
             for eachRow in allPortfolio:
                 eachRowDict = model_to_dict(eachRow)
-                results.append(eachRowDict['symbol'])
+                results[eachRowDict['symbol']] = eachRowDict['category']
             data = {
                 "status": "success",
-                "symbols": results
+                "portfolio": results
             }
         except:
             data = {"status":"user does not exist, or portfolio is empty"}
