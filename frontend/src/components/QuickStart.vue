@@ -281,7 +281,13 @@ export default {
   },
   methods: {
     handleSubmit() {
-      this.showResult = true;
+      if (this.amount === '' || this.amount === null || this.amount.value === 0 || 
+      this.time === '' || this.time === null || this.time.value === 0 || 
+      this.risk === '' || this.risk === null || this.risk.value === 0){
+            alert('Please fill in all your details.');
+      } else {
+        this.showResult = true;
+      }
       if (this.recommendation[0] == 4) {
         this.getTopGains()
       } else {
