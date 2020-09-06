@@ -37,3 +37,12 @@ export async function getCompanyData(param) {
   let response = await axios(options)
   return response.data
 }
+
+export async function getFutures() {
+  const options = {
+    method: 'get',
+    url: base_url + '/getFutures'
+  }
+  let response = await axios(options)
+  return response.data
+}

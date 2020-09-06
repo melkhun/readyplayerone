@@ -49,6 +49,7 @@
                 class="input-field justify-center"
                 :items="riskLevels"
                 v-model="risk"
+                placeholder="Select a risk level"
               ></v-select>
             </v-row>
 
@@ -104,31 +105,52 @@
         <br />
         <v-card flat>
           <v-tabs color="deep-purple accent-4" centered>
-            <v-tab v-for="rec of recommendation" :key="rec">
+            <v-tab v-for="rec of recommendation" :key="rec" @click='updateTable(tabs[rec].id)'>
               {{ tabs[rec].name }}
             </v-tab>
-            <v-tab-item v-for="rec of recommendation" :key="rec">
+            <!-- <v-tab-item v-for="rec of recommendation" :key="rec">
               <v-card flat>
                 <v-card-text>{{ tabs[rec].desc }}</v-card-text>
               </v-card>
-            </v-tab-item>
+            </v-tab-item> -->
           </v-tabs>
-          
+
+          <div :v-if="currentTab==4">
+            <p v-for="(k,v) of topGains" :key="k">{{ k }} {{v}}:</p>
+          </div>
+
           <!--samantha code here-->
 
-          <div class="button-style">
-          <v-btn
-            class="justify-center white--text"
-            color="rgb(0, 0, 255)"
-            min-width="300"
-            min-height="50"
-            x-large
-            @click="goBack"
+          <v-data-table
+            v-model="selected"
+            :headers="headers"
+            :items="desserts"
+            :single-select="singleSelect"
+            item-key="name"
+            show-select
+            class="elevation-1"
           >
-            START OVER
-          </v-btn>
+            <template v-slot:top>
+              <v-switch
+                v-model="singleSelect"
+                label="Single select"
+                class="pa-3"
+              ></v-switch>
+            </template>
+          </v-data-table>
+
+          <div class="button-style">
+            <v-btn
+              class="justify-center white--text"
+              color="rgb(0, 0, 255)"
+              min-width="300"
+              min-height="50"
+              x-large
+              @click="goBack"
+            >
+              START OVER
+            </v-btn>
           </div>
-        
         </v-card>
       </v-card-text>
     </v-card>
@@ -136,6 +158,8 @@
 </template>
 
 <script>
+import { getTopGains } from '../api'
+
 export default {
   data: () => ({
     name: null,
@@ -143,17 +167,22 @@ export default {
     risk: null,
     time: null,
     amount: null,
-    showResult: false,
+    showResult: true,
     riskLevels: ["Low", "Medium", "High"],
+    topGains: {
+      "Symbol": {"0": "TLVLF", "1": "BNKXF", "2": "CRYYF", "3": "PTKFF", "4": "CAIXY", "5": "BNDSY", "6": "CHWRF", "7": "CYDY", "8": "BIGC", "9": "WKHS"},
+      "Name": {"0": "Minds + Machines Group Limited", "1": "Bankia, S.A."}
+    },
+    currentTab: null,
     tabs: [
       {
         id: 0,
         name: "No recommendations found",
-        desc: "idk we cant help",
+        desc: "Sorry, we don't have anything suitable for you yet.",
       },
       {
         id: 1,
-        name: "FOREX",
+        name: "STOCK",
         desc:
           "Mr Worldwide, buy and sell currencies of your choice. Take a long position to buy when you expect the prices to go up, short sell when you expect prices to go down.",
       },
@@ -212,6 +241,31 @@ export default {
           "A REIT is a corporation, trust, or association that invests directly in income-producing real estate and is traded like a stock.",
       },
     ],
+    singleSelect: false,
+    selected: [],
+    headers: [
+      {
+        text: "Dessert (100g serving)",
+        align: "start",
+        sortable: false,
+        value: "name",
+      },
+      { text: "Calories", value: "calories" },
+      { text: "Fat (g)", value: "fat" },
+      // { text: "Carbs (g)", value: "carbs" },
+      // { text: "Protein (g)", value: "protein" },
+      // { text: "Iron (%)", value: "iron" },
+    ],
+    desserts: [
+      {
+        name: "Frozen Yogurt",
+        calories: 159,
+        fat: 6.0,
+        // carbs: 24,
+        // protein: 4.0,
+        // iron: "1%",
+      },
+    ],
   }),
   computed: {
     highCapital() {
@@ -237,6 +291,9 @@ export default {
       return [0];
     },
   },
+  mounted() {
+    this.getTopGains()
+  },
   methods: {
     handleSubmit() {
       console.log(this.recommendation);
@@ -247,6 +304,31 @@ export default {
       this.amount = null;
       this.risk = null;
       this.time = null;
+    },
+    async getTopGains() {
+      try {
+        var resp = await getTopGains()
+        console.log(resp[1428])
+        resp = JSON.parse(`${resp}`)
+        // this.desserts = 
+        // [
+        //   {
+        //     name: "Frozen Yogurt",
+        //     calories: 159,
+        //     fat: 6.0,
+        //     // carbs: 24,
+        //     // protein: 4.0,
+        //     // iron: "1%",
+        //   },
+        // ],
+        console.log(typeof resp)
+        
+      } catch(e) {
+        console.error(e)
+      }
+    },
+    updateTable(id) {
+      console.log(id)
     }
   },
 };

@@ -54,7 +54,7 @@
               required
               regular
             ></v-text-field>
-            <div class="profile-text">Salary</div>
+            <div class="profile-text">Your monthly expense</div>
             <v-text-field
               v-model="expense"
               class="input-field"
@@ -64,7 +64,7 @@
               regular
             ></v-text-field>
             
-            <div class='button-style'>
+            <!-- <div class='button-style'>
             <v-btn
               class="justify-center white--text"
               color="rgb(0, 0, 255)"
@@ -75,7 +75,8 @@
             >
               CALCULATE
             </v-btn>
-            </div>
+            </div> -->
+
             <div class="output-style">{{ calculateBudget }}</div>
           </v-form>
         </v-card>
@@ -154,7 +155,7 @@
               </v-expansion-panel>
             </v-expansion-panels>
 
-            <div class='button-style'>
+            <!-- <div class='button-style'>
             <v-btn
               class="justify-center white--text button"
               color="rgb(0, 0, 255)"
@@ -165,7 +166,7 @@
             >
               CALCULATE
             </v-btn>
-            </div>
+            </div> -->
 
             <div class="output-style">{{ calculateAssets }}</div>
           </v-form>
