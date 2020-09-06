@@ -49,6 +49,7 @@
                 class="input-field justify-center"
                 :items="riskLevels"
                 v-model="risk"
+                placeholder="Select a risk level"
               ></v-select>
             </v-row>
 
@@ -114,10 +115,14 @@
             </v-tab-item>
           </v-tabs>
 
+          <p v-for="(k,v) of topGains" :key="k">{{ k }} {{v}}:</p>
+          
+          <!--samantha code here-->
+
           <v-data-table
             v-model="selected"
             :headers="headers"
-            :items="instruments"
+            :items="desserts"
             :single-select="singleSelect"
             item-key="name"
             show-select
@@ -151,6 +156,8 @@
 </template>
 
 <script>
+import { getTopGains } from '../api'
+
 export default {
   data: () => ({
     name: null,
@@ -158,8 +165,12 @@ export default {
     risk: null,
     time: null,
     amount: null,
-    showResult: false,
+    showResult: true,
     riskLevels: ["Low", "Medium", "High"],
+    topGains: {
+      "Symbol": {"0": "TLVLF", "1": "BNKXF", "2": "CRYYF", "3": "PTKFF", "4": "CAIXY", "5": "BNDSY", "6": "CHWRF", "7": "CYDY", "8": "BIGC", "9": "WKHS"},
+      "Name": {"0": "Minds + Machines Group Limited", "1": "Bankia, S.A."}
+    },
     tabs: [
       {
         id: 0,
@@ -301,6 +312,9 @@ export default {
       return [0];
     },
   },
+  mounted() {
+    this.getTopGains()
+  },
   methods: {
     handleSubmit() {
       console.log(this.recommendation);
@@ -311,6 +325,17 @@ export default {
       this.amount = null;
       this.risk = null;
       this.time = null;
+    },
+    async getTopGains() {
+      try {
+        var resp = await getTopGains()
+        console.log(resp[1428])
+        resp = JSON.parse(`${resp}`)
+        console.log(typeof resp)
+        
+      } catch(e) {
+        console.error(e)
+      }
     },
   },
 };
