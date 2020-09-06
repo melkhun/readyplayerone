@@ -11,9 +11,18 @@ import "hchs-vue-charts";
 Vue.use(window.VueCharts);
 
 import Amplify, * as AmplifyModules from 'aws-amplify'
+// import { AmplifyPlugin } from 'aws-amplify-vue'
+// import awsconfig from './aws-exports'
+// Amplify.configure(awsconfig)
+
+// Vue.use(AmplifyPlugin, AmplifyModules)
+
+// import Amplify from 'aws-amplify';
+import '@aws-amplify/ui-vue';
 import { AmplifyPlugin } from 'aws-amplify-vue'
-import awsconfig from './aws-exports'
-Amplify.configure(awsconfig)
+import aws_exports from './aws-exports';
+
+Amplify.configure(aws_exports);
 
 Vue.use(AmplifyPlugin, AmplifyModules)
 

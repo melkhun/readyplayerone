@@ -1,0 +1,29 @@
+{
+  "providers": {
+    "awscloudformation": {
+      "AuthRoleName": "amplify-rp1-dev-163301-authRole",
+      "UnauthRoleArn": "arn:aws:iam::280783877271:role/amplify-rp1-dev-163301-unauthRole",
+      "AuthRoleArn": "arn:aws:iam::280783877271:role/amplify-rp1-dev-163301-authRole",
+      "Region": "us-east-1",
+      "DeploymentBucketName": "amplify-rp1-dev-163301-deployment",
+      "UnauthRoleName": "amplify-rp1-dev-163301-unauthRole",
+      "StackName": "amplify-rp1-dev-163301",
+      "StackId": "arn:aws:cloudformation:us-east-1:280783877271:stack/amplify-rp1-dev-163301/93a52b80-f01b-11ea-b38e-0e794c84352f",
+      "AmplifyAppId": "d1b5y85wyipj25"
+    }
+  },
+  "hosting": {
+    "amplifyhosting": {
+      "service": "amplifyhosting",
+      "providerPlugin": "awscloudformation",
+      "type": "manual",
+      "providerMetadata": {
+        "s3TemplateURL": "https://s3.amazonaws.com/amplify-rp1-dev-163301-deployment/amplify-cfn-templates/hosting/amplifyhosting-template.json",
+        "logicalId": "hostingamplifyhosting"
+      },
+      "lastPushTimeStamp": "2020-09-06T08:39:45.068Z",
+      "output": {},
+      "lastPushDirHash": "/+VZ33seFFqAr6wbtptwbINUfSA="
+    }
+  }
+}

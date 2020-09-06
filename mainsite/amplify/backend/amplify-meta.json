@@ -22,7 +22,7 @@
         "s3TemplateURL": "https://s3.amazonaws.com/amplify-readyplayerone-dev-95538-deployment/amplify-cfn-templates/auth/readyplayeroneedbc155a-cloudformation-template.yml",
         "logicalId": "authreadyplayeroneedbc155a"
       },
-      "lastPushTimeStamp": "2020-09-06T02:04:43.666Z",
+      "lastPushTimeStamp": "2020-09-06T17:03:23.826Z",
       "output": {
         "AppClientSecret": "tsipfdfvlarlmnseat2880apntek56huag04bmhplji9i91tqon",
         "UserPoolId": "us-east-1_EjgZJJPNS",
@@ -32,7 +32,7 @@
         "IdentityPoolName": "readyplayeroneedbc155a_identitypool_edbc155a__dev",
         "UserPoolName": "readyplayeroneedbc155a_userpool_edbc155a"
       },
-      "lastPushDirHash": "MJLiCXH3WM6GC2e3luIbn7xco3w="
+      "lastPushDirHash": "lAbSHqB1pxWRtJVjNm4snaIhsas="
     }
   }
 }
