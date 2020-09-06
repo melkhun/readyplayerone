@@ -1,7 +1,7 @@
 <template>
   <div class="card">
     <div class="card-body">
-      <h2 class="card-title">Doughnut</h2>
+      <h2 class="card-title">Breakdown of Instrument Types</h2>
     </div>
 
     <div class="card-img-bottom">
@@ -21,14 +21,19 @@ export default {
     return {
       datasets: [
         {
-          data: [10, 20, 40],
-          backgroundColor: ["#f36e60", "#ffdb3b", "#185190"],
-          hoverBackgroundColor: ["#fbd2cd", "#fef5c9", "#d1e3f7"]
+          data: [10, 20, 4, 50, 10], //Think we need compute
+          backgroundColor: ["#8544FA", "#493CDE", "#9FA8D", "#3C84DE", "#44C5FA"],
+          hoverBackgroundColor: ["#B47DFA", "#7567E0", "#C5CA", "#77ADE0", "#A2EAFA"]
         }
       ],
-      labels: ["Foo", "Bar", "Baz"],
+      labels: ["Equities", "Futures", "Options", "ETFs", "Bonds"], //input instrument type as labels
       option: {}
     };
   }
 };
 </script>
+
+
+<style scoped>
+
+</style>

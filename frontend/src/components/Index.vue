@@ -94,7 +94,7 @@ export default {
     //   });
     // },
       logout(){
-        alert('user logout');
+       //alert('user logout');
         Auth.signOut()
         .then(data => {
           this.$router.push('/login')
