@@ -38,7 +38,7 @@
               v-model="selected"
               :headers="headers"
               :items="tableContent"
-              :item-key="$symbol"
+              item-key="symbol"
               show-select
               class="elevation-1"
             >
@@ -106,11 +106,13 @@ mounted() {
         username: this.username,
       }
       let userData = await getPortfolio(data);
-      this.tableItems = userData['symbols'];
+      this.tableItems = userData['portfolio'];
+
+      let lengthItems = Object.keys(this.tableItems).length;
 
       // cap at 5 due to api limit restrictions
-      for (var i = 0; i < Math.min(this.tableItems.length, 5); i++) {
-        this.getCompanyData(this.tableItems[i]);
+      for (var i = 0; i < Math.min(lengthItems, 5); i++) {
+        this.getCompanyData(Object.keys(this.tableItems)[i]);
       }
     },
 
@@ -185,7 +187,7 @@ mounted() {
 
         var resp = await getCompanyData(symbol);
 
-        console.log(resp);
+        // console.log(resp);
 
         if (Object.keys(resp).length === 0 || ("Note" in resp)) {
           if (this.errorMsg == null) {
@@ -221,14 +223,19 @@ mounted() {
 
     deleteSelected() {
       for (let id in this.selected) {
+        console.log(this.tableContent.indexOf(this.selected[0]));
+
+        let tableID = this.tableContent.indexOf(this.selected[0]);
+        let currSymbol = this.selected[id]["symbol"];
+
         const data = {
           username: this.username,
-          category: this.selected[id]["type"],
-          symbol: this.selected[id]["symbol"],
+          category: this.tableItems[currSymbol],
+          symbol: currSymbol,
         };
         console.log(data);
         this.deletePortfolio(data);
-        this.tableContent.splice(id, 1);
+        this.tableContent.splice(tableID, 1);
 
       }
       
