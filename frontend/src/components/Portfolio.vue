@@ -77,6 +77,7 @@
 
 import ChartDoughnut from "@/components/chart-doughnut";
 // import { getCompanyData } from '../api'
+import { deletePortfolioAsset } from '../api'
 
 export default {
   data: () => ({
@@ -133,6 +134,14 @@ export default {
         console.error(e);
       }
     },
+    async deletePortfolioAsset(data) {
+      try {
+        var resp = await deletePortfolioAsset(data);
+        console.log(resp)
+      } catch(e) {
+        console.log(e)
+      }
+    },
     deleteSelected() {
       for (let id in this.selected) {
         const data = {
@@ -140,6 +149,7 @@ export default {
           symbol: this.selected[id]["symbol"],
         }
         console.log(data)
+        this.deletePortfolioAsset(data)
       }
     }
   }
