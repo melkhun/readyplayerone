@@ -208,11 +208,11 @@ export default {
   },
   computed: {
     calculateBudget() {
-      var netCashFlow = this.income - this.expense;
+      var netCashFlow = Number(this.income) - Number(this.expense);
       return this.currencyFormat(netCashFlow);
     },
     calculateAssets() {
-      var netAssets = this.cash + this.cpf + this.lifeinsurance + this.investments - this.debt - this.bills;
+      var netAssets = Number(this.cash) + Number(this.cpf) + Number(this.lifeinsurance) + Number(this.investments) - Number(this.debt) - Number(this.bills);
       return this.currencyFormat(netAssets)
     },
   },
