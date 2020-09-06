@@ -308,8 +308,8 @@ export default {
     async getTopGains() {
       try {
         var resp = await getTopGains()
-        // resp = JSON.parse(`${resp}`)
-        resp = this.topGains
+        resp = JSON.parse(`${resp}`)
+        // resp = this.topGains
 
         var len = Object.keys(resp.Symbol).length
         var tmp = []
