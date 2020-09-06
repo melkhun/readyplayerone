@@ -158,7 +158,7 @@
 </template>
 
 <script>
-import { getTopGains } from '../api'
+import { getTopGains, getCompanyData } from '../api'
 
 export default {
   data: () => ({
@@ -308,21 +308,29 @@ export default {
     async getTopGains() {
       try {
         var resp = await getTopGains()
-        console.log(resp[1428])
         resp = JSON.parse(`${resp}`)
-        // this.desserts = 
-        // [
-        //   {
-        //     name: "Frozen Yogurt",
-        //     calories: 159,
-        //     fat: 6.0,
-        //     // carbs: 24,
-        //     // protein: 4.0,
-        //     // iron: "1%",
-        //   },
-        // ],
-        console.log(typeof resp)
-        
+        // resp = this.topGains
+
+        var len = Object.keys(resp.Symbol).length
+        var tmp = []
+        for (var i=0; i<len; i++) {
+          tmp.push({
+            name: resp.Symbol[i],
+            calories: resp.Name[i]
+          })
+        }
+        this.desserts = tmp
+        console.log(tmp)
+        this.getCompanyData('TLVLF')
+      } catch(e) {
+        console.error(e)
+      }
+    },
+    async getCompanyData() {
+      try {
+        var resp = await getCompanyData()
+        // resp = JSON.parse(`${resp}`)
+        console.log(resp)
       } catch(e) {
         console.error(e)
       }
