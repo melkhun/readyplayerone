@@ -239,17 +239,7 @@ export default {
     ],
     singleSelect: false,
     selected: [],
-    headers: [
-      { text: "Symbol", value: "symbol" },
-      { text: "Name", value: "name" },
-      { text: "Price (Intraday)", value: "price" },
-      { text: "Change", value: "change" },
-      { text: "% Change", value: "pChange" },
-      { text: "Volume", value: "volume" },
-      { text: "Avg Vol (3 month)", value: "aVolume" },
-      { text: "Market Cap", value: "cap" },
-      { text: "PE Ratio (TTM)", value: "ratio" },
-    ],
+    headers: [],
     tableContent: [],
   }),
   computed: {
@@ -290,9 +280,20 @@ export default {
       }
       if (this.recommendation[0] == 4) {
         this.getTopGains()
-      } else {
-        this.tableContent = []
       }
+      if (this.recommendation[0] == 5) {
+        this.getFutures()
+      }
+      if (this.recommendation[0] == 6) {
+        this.getOptions()
+      }
+      if (this.recommendation[0] == 7) {
+        this.getTopETFs()
+      }
+      if (this.recommendation[0] == 8) {
+        this.getBonds()
+      }
+
     },
     goBack() {
       this.showResult = false;
@@ -304,8 +305,31 @@ export default {
     async getFutures() {
       try {
         var resp = await getFutures()
-        this.futures = resp
-        console.log(this.futures.Change)
+        var len = Object.keys(resp.Symbol).length
+        var tmp = []
+        for (var i=0; i<len; i++) {
+          tmp.push({
+            symbol: resp["Symbol"][i],
+            name: resp["Name"][i],
+            price: resp["Last price"][i],
+            mkttime: resp["Market time"][i],
+            change: resp["Change"][i],
+            pChange: resp["% change"][i],
+            volume: resp["Volume"][i],
+            openInt: resp["Open Interest"][i],
+          })
+        }
+        this.tableContent = tmp
+        this.headers = [
+          { text: "Symbol", value: "symbol" },
+          { text: "Name", value: "name" },
+          { text: "Last price", value: "price" },
+          { text: "Market time", value: "mkttime" },
+          { text: "Change", value: "change" },
+          { text: "% change", value: "pChange" },
+          { text: "Volume", value: "volume" },
+          { text: "Open Interest", value: "openInt" },
+        ]
       } catch(e) {
         console.error(e)
       }
@@ -314,8 +338,25 @@ export default {
     async getBonds() {
       try {
         var resp = await getBonds()
-        // this.bonds = resp
-        console.log(resp)
+        var len = Object.keys(resp.Symbol).length
+        var tmp = []
+        for (var i=0; i<len; i++) {
+          tmp.push({
+            symbol: resp["Symbol"][i],
+            name: resp["Name"][i],
+            price: resp["Last price"][i],
+            change: resp["Change"][i],
+            pChange: resp["% change"][i],
+          })
+        }
+        this.tableContent = tmp
+        this.headers = [
+          { text: "Symbol", value: "symbol" },
+          { text: "Name", value: "name" },
+          { text: "Last price", value: "price" },
+          { text: "Change", value: "change" },
+          { text: "% change", value: "pChange" },
+        ]
       } catch(e) {
         console.error(e)
       }
@@ -324,8 +365,31 @@ export default {
     async getTopETFs() {
       try {
         var resp = await getTopETFs()
-        // this.bonds = resp
-        console.log(resp)
+        var len = Object.keys(resp.Symbol).length
+        var tmp = []
+        for (var i=0; i<len; i++) {
+          tmp.push({
+            symbol: resp["Symbol"][i],
+            name: resp["Name"][i],
+            price: resp["Price (intraday)"][i],
+            change: resp["Change"][i],
+            pChange: resp["% change"][i],
+            volume: resp["Volume"][i],
+            fiftyday: resp["50-day average"][i],
+            twohdday: resp["200-day average"][i],
+          })
+        }
+        this.tableContent = tmp
+        this.headers = [
+          { text: "Symbol", value: "symbol" },
+          { text: "Name", value: "name" },
+          { text: "Price (intraday)", value: "price" },
+          { text: "Change", value: "change" },
+          { text: "% change", value: "pChange" },
+          { text: "Volume", value: "volume" },
+          { text: "50-day average", value: "fiftyday" },
+          { text: "200-day average", value: "twohdday" },
+        ]
       } catch(e) {
         console.error(e)
       }
@@ -334,12 +398,42 @@ export default {
     async getOptions() {
       try {
         var resp = await getOptions()
-        // this.bonds = resp
-        console.log(resp)
+        var len = Object.keys(resp.Symbol).length
+        var tmp = []
+        for (var i=0; i<len; i++) {
+          tmp.push({
+            symbol: resp["Underlying Symbol"][i],
+            name: resp["Name"][i],
+            strike: resp["Strike"][i],
+            expDate: resp["Expiration Date"][i],
+            price: resp["Price (Intraday)"][i],
+            change: resp["Change"][i],
+            pChange: resp["% Change"][i],
+            bid: resp["Bid"][i],
+            ask: resp["Ask"][i],
+            volume: resp["Volume"][i],
+            openInt: resp["Open Interest"][i],
+          })
+        }
+        this.tableContent = tmp
+        this.headers = [
+          { text: "Underlying Symbol", value: "symbol" },
+          { text: "Name", value: "name" },
+          { text: "Strike", value: "strike" },
+          { text: "Expiration Date", value: "expDate" },
+          { text: "Price (intraday)", value: "price" },
+          { text: "Change", value: "change" },
+          { text: "% change", value: "pChange" },
+          { text: "Bid", value: "bid" },
+          { text: "Ask", value: "ask" },
+          { text: "Volume", value: "volume" },
+          { text: "Open Interest", value: "openInt" },
+        ]
       } catch(e) {
         console.error(e)
       }
     },
+
     async getTopGains() {
       try {
         var resp = await getTopGains()
@@ -359,6 +453,17 @@ export default {
           })
         }
         this.tableContent = tmp
+        this.headers = [
+          { text: "Symbol", value: "symbol" },
+          { text: "Name", value: "name" },
+          { text: "Price (Intraday)", value: "price" },
+          { text: "Change", value: "change" },
+          { text: "% Change", value: "pChange" },
+          { text: "Volume", value: "volume" },
+          { text: "Avg Vol (3 month)", value: "aVolume" },
+          { text: "Market Cap", value: "cap" },
+          { text: "PE Ratio (TTM)", value: "ratio" },
+        ]
       } catch(e) {
         console.error(e)
       }

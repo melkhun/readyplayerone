@@ -24,6 +24,7 @@
           <v-tab>Quick Start</v-tab>
           <v-tab>My Portfolio</v-tab>
           <v-tab @click="logout">Logout</v-tab>
+
           <v-tab-item>
             <v-container fluid>
               <Home></Home>
@@ -70,6 +71,8 @@ import Home from "../components/Home";
 import Calculator from "../components/Calculator";
 import QuickStart from "../components/QuickStart";
 import Portfolio from "../components/Portfolio";
+import { Auth } from "aws-amplify";
+import { AmplifyEventBus } from 'aws-amplify-vue';
 
 export default {
   components: {
@@ -85,11 +88,19 @@ export default {
     drawer: null,
   }),
   methods: {
-    logout: function() {
-      this.$store.dispatch("logout").then(() => {
-        this.$router.push("/login");
-      });
-    },
+    // logout: function() {
+    //   this.$store.dispatch("logout").then(() => {
+    //     this.$router.push("/login");
+    //   });
+    // },
+      logout(){
+        alert('user logout');
+        Auth.signOut()
+        .then(data => {
+          this.$router.push('/login')
+        })
+        .catch(err => console.log(err));
+      }
   },
 };
 </script>
