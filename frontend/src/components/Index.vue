@@ -117,7 +117,7 @@ export default {
 }
 
 .container {
-  padding: 5rem 0;
+  padding: 2rem 0 2rem 0;
   background-color: #828deb;
 }
 
