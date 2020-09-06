@@ -1,43 +1,43 @@
 <template>
-<div class="Quickstart">
-  
-<v-card flat class="block-card">
+  <div class="Portfolio ">
 
-<!-- input -->
-  <v-card-text class="text-center">
+    <v-card flat class="block-card">
 
-    <span class="text-blue"><h1><b>Your Portfolio Overview</b></h1></span><br>
-    
-    To insert chart of user here
+    <!-- input -->
+      <v-card-text class="text-center">
 
-  <div v-if="assets" style="text-align:left;">
-    Assets
-    <hr>
-    <table>
-    <tr>
-      <td></td>
-      <td>High</td>
-      <td>Low</td>
-      <td>Open</td>
-      <td>Close</td>
-    </tr>
-    <div v-for="(assets,index) in listofassets" :key="assets">
-      <tr>
-      <td>Assets {{index+1}}</td>
-      <td v-for="value in assets" :key="value">
-        {{value}}
-      </td>
-      </tr>
-    </div>
-    </table>
+        <span class="text-blue"><h1><b>Your Portfolio Overview</b></h1></span><br>
+        
+        To insert chart of user here
+
+      <div v-if="assets" style="text-align:left;">
+        Assets
+        <hr>
+        <table>
+        <tr>
+          <td></td>
+          <td>High</td>
+          <td>Low</td>
+          <td>Open</td>
+          <td>Close</td>
+        </tr>
+        <div v-for="(assets,index) in listofassets" :key="assets">
+          <tr>
+          <td>Assets {{index+1}}</td>
+          <td v-for="value in assets" :key="value">
+            {{value}}
+          </td>
+          </tr>
+        </div>
+        </table>
+      </div>
+      </v-card-text>
+
+    <!-- output --> 
+
+    </v-card>
+
   </div>
-  </v-card-text>
-
-<!-- output --> 
-
-</v-card>
-
-</div>
 </template>
 
 <script>
@@ -57,6 +57,8 @@
     },
     methods: {
       
+    },
+    mounted () {
     },
   };
 </script>
