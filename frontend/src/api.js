@@ -46,3 +46,30 @@ export async function getFutures() {
   let response = await axios(options)
   return response.data
 }
+
+export async function getBonds() {
+  const options = {
+    method: 'get',
+    url: base_url + '/getBonds'
+  }
+  let response = await axios(options)
+  return response.data
+}
+
+export async function getOptions() {
+  const options = {
+    method: 'get',
+    url: base_url + '/getOptions'
+  }
+  let response = await axios(options)
+  return response.data
+}
+
+export async function getTopETFs() {
+  const options = {
+    method: 'get',
+    url: base_url + '/getOptions'
+  }
+  let response = await axios(options)
+  return response.data
+}
