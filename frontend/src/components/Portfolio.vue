@@ -15,14 +15,13 @@
 
     </div>
   </div>
-
+<br>
   <div class="header-style">
           Here's a breakdown of your followed portfolio
         </div>
-
-        <div>
-          <h1>Chart Demo</h1>
-      </div>
+<br>
+<br>
+<br>
         <div>
           <div v-if="assets" style="text-align:left;">
             <h2><b>Assets</b></h2>
