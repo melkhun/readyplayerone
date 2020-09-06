@@ -31,8 +31,9 @@
           </table>
         </div>
 
-        <!--Chart--->
-        <div>
+        <!--Donut-->
+        
+  <div>
     <h1>Chart Demo</h1>
 
     <div class="grid">
@@ -41,8 +42,49 @@
       <ChartLine />
     </div>
   </div>
+        <!--Chart--->
+        <div>
+          <h1>Chart Demo</h1>
+          <div v-if="assets" style="text-align:left;">
+          <h2><b>Assets</b></h2>
+          <hr>
+        </div>
 
+        <div>
+          <v-simple-table
+                  :dense="dense"
+                  :fixed-header="fixedHeader"
+                  :height="height"
+                >
+            <template v-slot:default>
+              <thead>
+                <tr>
+                  <th></th>
+                  <th class="text-left">High</th>
+                  <th class="text-left">Low</th>
+                  <th class="text-left">Open</th>
+                  <th class="text-left">Close</th>
+                  <th class="text-left">Remove</th>
+                </tr>
+              </thead>
+              <tbody>
+                <tr v-for="(item, index) in desserts" :key="item.name">
+                  <td>Asset {{index + 1}}</td>
+                  <td>{{ item.high }}</td>
+                  <td>{{ item.low }}</td>
+                  <td>{{ item.open }}</td>
+                  <td>{{ item.close }}</td>
+                  <td><v-btn color="primary" @click="deleteItem">remove</v-btn></td>
+                </tr>
+              </tbody>
+            </template>
+          </v-simple-table>
+        </div>
+
+
+      </div>
       </v-card-text>
+
 
       <!-- output -->
     </v-card>

@@ -91,4 +91,12 @@ def testend(request):
     if request.method == "GET":
         ticker = request.GET.get("ticker")
 
-
+def getselectedquickstart(request):
+    if request.method == "GET":
+        symbol = request.GET.get("symbol")
+        data = {"status": "success"}
+    else:
+        data = {"status":"error"}
+    resp = JsonResponse(data)
+    resp["Access-Control-Allow-Origin"] = "*"
+    return resp
