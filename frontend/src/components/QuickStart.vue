@@ -105,18 +105,20 @@
         <br />
         <v-card flat>
           <v-tabs color="deep-purple accent-4" centered>
-            <v-tab v-for="rec of recommendation" :key="rec">
+            <v-tab v-for="rec of recommendation" :key="rec" @click='updateTable(tabs[rec].id)'>
               {{ tabs[rec].name }}
             </v-tab>
-            <v-tab-item v-for="rec of recommendation" :key="rec">
+            <!-- <v-tab-item v-for="rec of recommendation" :key="rec">
               <v-card flat>
                 <v-card-text>{{ tabs[rec].desc }}</v-card-text>
               </v-card>
-            </v-tab-item>
+            </v-tab-item> -->
           </v-tabs>
 
-          <p v-for="(k,v) of topGains" :key="k">{{ k }} {{v}}:</p>
-          
+          <div :v-if="currentTab==4">
+            <p v-for="(k,v) of topGains" :key="k">{{ k }} {{v}}:</p>
+          </div>
+
           <!--samantha code here-->
 
           <v-data-table
@@ -171,6 +173,7 @@ export default {
       "Symbol": {"0": "TLVLF", "1": "BNKXF", "2": "CRYYF", "3": "PTKFF", "4": "CAIXY", "5": "BNDSY", "6": "CHWRF", "7": "CYDY", "8": "BIGC", "9": "WKHS"},
       "Name": {"0": "Minds + Machines Group Limited", "1": "Bankia, S.A."}
     },
+    currentTab: null,
     tabs: [
       {
         id: 0,
@@ -179,7 +182,7 @@ export default {
       },
       {
         id: 1,
-        name: "FOREX",
+        name: "STOCK",
         desc:
           "Mr Worldwide, buy and sell currencies of your choice. Take a long position to buy when you expect the prices to go up, short sell when you expect prices to go down.",
       },
@@ -249,42 +252,18 @@ export default {
       },
       { text: "Calories", value: "calories" },
       { text: "Fat (g)", value: "fat" },
-      { text: "Carbs (g)", value: "carbs" },
-      { text: "Protein (g)", value: "protein" },
-      { text: "Iron (%)", value: "iron" },
+      // { text: "Carbs (g)", value: "carbs" },
+      // { text: "Protein (g)", value: "protein" },
+      // { text: "Iron (%)", value: "iron" },
     ],
     desserts: [
       {
         name: "Frozen Yogurt",
         calories: 159,
         fat: 6.0,
-        carbs: 24,
-        protein: 4.0,
-        iron: "1%",
-      },
-      {
-        name: "Ice cream sandwich",
-        calories: 237,
-        fat: 9.0,
-        carbs: 37,
-        protein: 4.3,
-        iron: "1%",
-      },
-      {
-        name: "Eclair",
-        calories: 262,
-        fat: 16.0,
-        carbs: 23,
-        protein: 6.0,
-        iron: "7%",
-      },
-      {
-        name: "Cupcake",
-        calories: 305,
-        fat: 3.7,
-        carbs: 67,
-        protein: 4.3,
-        iron: "8%",
+        // carbs: 24,
+        // protein: 4.0,
+        // iron: "1%",
       },
     ],
   }),
@@ -331,12 +310,26 @@ export default {
         var resp = await getTopGains()
         console.log(resp[1428])
         resp = JSON.parse(`${resp}`)
+        // this.desserts = 
+        // [
+        //   {
+        //     name: "Frozen Yogurt",
+        //     calories: 159,
+        //     fat: 6.0,
+        //     // carbs: 24,
+        //     // protein: 4.0,
+        //     // iron: "1%",
+        //   },
+        // ],
         console.log(typeof resp)
         
       } catch(e) {
         console.error(e)
       }
     },
+    updateTable(id) {
+      console.log(id)
+    }
   },
 };
 </script>
