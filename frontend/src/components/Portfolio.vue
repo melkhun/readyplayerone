@@ -28,6 +28,7 @@
                   <th class="text-left">Low</th>
                   <th class="text-left">Open</th>
                   <th class="text-left">Close</th>
+                  <th class="text-left">Remove</th>
                 </tr>
               </thead>
               <tbody>
@@ -37,6 +38,7 @@
                   <td>{{ item.low }}</td>
                   <td>{{ item.open }}</td>
                   <td>{{ item.close }}</td>
+                  <td><v-btn color="primary" @click="deleteItem">remove</v-btn></td>
                 </tr>
               </tbody>
             </template>
@@ -47,7 +49,7 @@
       </div>
       </v-card-text>
 
-      <!--Apex Chart--->
+      Apex Chart
         <div>
         <div class="chart-wrap">
           <div id="chart">
@@ -85,7 +87,6 @@
           </button>
         </div>
       </div>
-      </v-card-text>
 
     <!-- output --> 
 
@@ -152,6 +153,14 @@ export default {
       arr.push(Math.floor(Math.random() * (100 - 1 + 1)) + 1);
       this.series = arr;
     },
+    deleteItem () {
+   if(confirm('Are you sure you want to delete this item?')){
+  for(var i = 0; i <this.selected.length; i++){
+      const index = this.desserts.indexOf(this.selected[i]);
+      this.desserts.splice(index, 1);
+  }
+    }
+   },
     mounted () {
     },
   },
