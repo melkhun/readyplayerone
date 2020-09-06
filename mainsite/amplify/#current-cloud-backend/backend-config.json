@@ -1,0 +1,10 @@
+{
+  "auth": {
+    "readyplayeroneedbc155a": {
+      "service": "Cognito",
+      "providerPlugin": "awscloudformation",
+      "dependsOn": [],
+      "customAuth": false
+    }
+  }
+}
