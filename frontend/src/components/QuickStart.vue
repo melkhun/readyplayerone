@@ -163,7 +163,7 @@ export default {
     risk: null,
     time: null,
     amount: null,
-    showResult: true,
+    showResult: false,
     riskLevels: ["Low", "Medium", "High"],
     topGains: {
       "Symbol": {"0": "TLVLF", "1": "BNKXF", "2": "CRYYF", "3": "PTKFF", "4": "CAIXY", "5": "BNDSY", "6": "CHWRF", "7": "CYDY", "8": "BIGC", "9": "WKHS"},
