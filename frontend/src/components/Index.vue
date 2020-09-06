@@ -1,29 +1,17 @@
 <template>
   <v-app>
-    <v-navigation-drawer v-model="drawer" color="indigo lighten-1" dark app>
-      <v-list dense>
-        <v-list-item two-line>
+    <v-app-bar app color="#828deb" flat>
+      
           <v-list-item-avatar tile>
             <img src="../assets/team_logov2.png" />
           </v-list-item-avatar>
-          <v-list-item-content>
-            <v-list-item-title>READY PLAYER 1</v-list-item-title>
-            <v-list-item-subtitle>Financially Ready in 3, 2, 1</v-list-item-subtitle>
+          <v-list-item-content style="text-align:left;">
+            <v-list-item-title float-left style="color:white">READY PLAYER 1</v-list-item-title>
+            <v-list-item-subtitle style="color:white">Financially Ready in 3, 2, 1</v-list-item-subtitle>
           </v-list-item-content>
-        </v-list-item>
-        <v-list-item link>
-          <v-list-item-action>
-            <v-icon>mdi-view-dashboard</v-icon>
-          </v-list-item-action>
-          <v-list-item-content>
-            <v-list-item-title>Dashboard</v-list-item-title>
-          </v-list-item-content>
-        </v-list-item>
-      </v-list>
-    </v-navigation-drawer>
+   
 
-    <v-app-bar app color="white" flat>
-      <v-app-bar-nav-icon @click.stop="drawer = !drawer"></v-app-bar-nav-icon>
+
     </v-app-bar>
 
     <v-main>

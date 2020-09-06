@@ -91,4 +91,14 @@ def testend(request):
     if request.method == "GET":
         ticker = request.GET.get("ticker")
 
-
+def postselectedquickstart(request):
+    if request.method == "POST":
+        # username = request.POST["username"]
+        json_data = request.POST["json_data"]
+        # insert saving of data into model here
+        data = {"status": "success"}
+    else:
+        data = {"status":"error"}
+    resp = JsonResponse(data)
+    resp["Access-Control-Allow-Origin"] = "*"
+    return resp
