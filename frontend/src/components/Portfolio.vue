@@ -10,20 +10,9 @@
   <div>
     <h1></h1>
 
-    <div class="grid" v-if="showChart">
-  <div class="card">
-    <div class="card-body">
-      <h2 class="card-title">Breakdown of Instrument Types</h2>
-    </div>
-    <div class="card-img-bottom">
-      <chartjs-doughnut
-        :bind="true"
-        :datasets="datasets"
-        :labels="labels"
-        :option="option"
-      />
-    </div>
-  </div>
+    <div class="grid">
+      <ChartDoughnut :countEtf="countEtf" :countBond="countBond" :countFuture="countFuture" :countOption="countOption" :countEquity="countEquity" />
+
     </div>
   </div>
 <br>
@@ -64,17 +53,13 @@
 </template>
 
 <script>
-// import ChartDoughnut from "@/components/chart-doughnut";
+import ChartDoughnut from "@/components/chart-doughnut";
 import { getPortfolio, deletePortfolioAsset } from '../api';
 import { Auth } from 'aws-amplify';
 import { getCompanyData } from '../api'
 
 export default {
   data: () => ({
-    showChart: false,
-    datasets: [],
-    labels: ["ETFs", "Bonds", "Futures", "Options", "Equities"], //input instrument type as labels
-    option: {},
     headers: [
       { text: "Symbol", value: "symbol" },
       { text: "Name", value: "name" },
@@ -101,9 +86,9 @@ export default {
     countEquity: 0,
     countTotal:0
   }),
-  // components: {
-  //   ChartDoughnut,
-  // },
+  components: {
+    ChartDoughnut,
+  },
 mounted() {
     this.getUser();
     // this.getItems();
@@ -128,14 +113,6 @@ mounted() {
       for (var i = 0; i < Math.min(lengthItems, 5); i++) {
         this.getCompanyData(Object.keys(this.tableItems)[i]);
       }
-      this.datasets =  [
-        {
-          data: [this.countEtf,this.countBond,this.countFuture,this.countOption,this.countEquity], //Think we need compute
-          backgroundColor: ["#8544FA", "#493CDE", "#9FA8D", "#3C84DE", "#44C5FA"],
-          hoverBackgroundColor: ["#B47DFA", "#7567E0", "#C5CA", "#77ADE0", "#A2EAFA"]
-        }
-      ]
-      this.showChart = true
     },
 
     getItems() {
