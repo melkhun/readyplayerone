@@ -93,24 +93,21 @@ def testend(request):
 
 from .models import Portfolio
 
-def getselectedquickstart(request):
+def addSelectedPortfolio(request):
     if request.method == "GET":
         category = request.GET.get("category")
         symbol = request.GET.get("symbol")
         username = request.GET.get("username")
-        if category == "Common Stock":
-            category = "equities"
-        # mock data
-        # saving data
+
         try:
-            portfolio_instance = Portfolio.objects.get(username=username)
-            # halp
-        except Portfolio.DoesNotExist:
+            existingRow = Portfolio.objects.get(username=username, category=category, symbol=symbol)
+            data = {"status":"existing data, not added"}
+        
+        except:
             portfolio_instance = Portfolio(username=username, category=category, symbol=symbol)
             portfolio_instance.save()
-        data = {"status": "success"}
-    else:
-        data = {"status":"error"}
+            data = {"status": "success"}
+
     resp = JsonResponse(data)
     resp["Access-Control-Allow-Origin"] = "*"
     return resp

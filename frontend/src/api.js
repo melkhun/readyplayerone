@@ -83,3 +83,15 @@ export async function deletePortfolioAsset(data) {
   let response = await axios(options)
   return response.data
 }
+
+export async function addToPortfolio(data) {
+  const options = {
+    method: 'get',
+    params: data,
+    url: base_url + '/addSelectedPortfolio'
+  }
+  let response = await axios(options)
+  return response.data
+}
+
+
