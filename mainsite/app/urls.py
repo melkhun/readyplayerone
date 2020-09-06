@@ -15,4 +15,5 @@ urlpatterns = [
     path('getcompanysymbol', views.getcompanysymbol, name='getcompanysymbol'),
     path('getcompanydata', views.getcompanydata, name='getcompanydata'),
     path('postselectedquickstart', views.postselectedquickstart, name='postselectedquickstart'),
+    path('deleteportfolioasset', views.deleteportfolioasset, name='deleteportfolioasset'),
 ]
