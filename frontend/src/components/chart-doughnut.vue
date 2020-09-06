@@ -27,7 +27,8 @@ export default {
     return {
       datasets: [
         {
-          data: [this.countEtf,this.countBond,this.countFuture,this.countOption,this.countEquity], //Think we need compute
+          // data: [this.countEtf,this.countBond,this.countFuture,this.countOption,this.countEquity], //Think we need compute
+          data: [2,1,2,2,3], //Think we need compute
           backgroundColor: ["#8544FA", "#493CDE", "#9FA8D", "#3C84DE", "#44C5FA"],
           hoverBackgroundColor: ["#B47DFA", "#7567E0", "#C5CA", "#77ADE0", "#A2EAFA"]
         }
@@ -39,18 +40,7 @@ export default {
   mounted() {
     this.renderChart(this.datasets, this.options);
 
-    this.render();
   },
-  method: {
-    render(){
-    setTimeout(function(){
-      console.log("in here")
-      this.renderChart(this.datasets, this.options);
-    }, 200);
-    }
-
-  }
-
 };
 </script>
 
