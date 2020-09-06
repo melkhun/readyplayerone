@@ -52,7 +52,7 @@
           </v-tab-item>
           <v-tab-item>
             <v-container fluid>
-              <Calculator></Calculator>
+              <Portfolio></Portfolio>
             </v-container>
           </v-tab-item>
           <v-tab-item>
@@ -78,9 +78,11 @@
 import Home from "../components/Home";
 import Calculator from "../components/Calculator";
 import QuickStart from "../components/QuickStart";
+import Portfolio from "../components/Portfolio";
 
 export default {
   components: {
+    Portfolio,
     Calculator,
     QuickStart,
     Home,

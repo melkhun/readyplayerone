@@ -44,7 +44,7 @@
           <v-card-title class="justify-center"><span class="text-blue">Risk Appetite</span></v-card-title>
         </v-row>
         <v-row>
-          <v-select class="input-field justify-center" :items="riskLevels" v-model="risk"></v-select>
+          <v-select class="input-field justify-center" :items="riskLevels" v-model="risk" placeholder="Select a risk level"></v-select>
         </v-row>
 
         <v-card-title class="justify-center"><span class="text-blue">Time Horizon (Years)</span></v-card-title>
