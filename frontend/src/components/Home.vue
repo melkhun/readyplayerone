@@ -11,7 +11,7 @@
           Learn more about your financials and where to start investing in.
         </h3>
       </kinesis-element>
-      <!-- background-circles-props -->
+      <!-- background-circles-props 
       <v-container flex colour="transparent" style="padding-bottom:30">
         <v-row flex class="justify-center">
           <v-col cols="12" md="4">
@@ -39,7 +39,7 @@
             </v-btn>
           </v-col>
         </v-row>
-      </v-container>
+      </v-container>-->
 
       <kinesis-element axis="y">
         <div class="circle circle-purple"></div>
