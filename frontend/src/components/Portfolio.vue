@@ -6,22 +6,27 @@
         <span class="text-blue"
           ><h1><b>Your Followed Portfolio Overview</b></h1></span
         ><br />
-        
-  <div>
-    <h1></h1>
 
-    <div class="grid">
-      <ChartDoughnut :countEtf="countEtf" :countBond="countBond" :countFuture="countFuture" :countOption="countOption" :countEquity="countEquity" />
+        <div>
+          <h1></h1>
 
-    </div>
-  </div>
-<br>
-  <div class="header-style">
+          <div class="grid">
+            <ChartDoughnut
+              :countEtf="countEtf"
+              :countBond="countBond"
+              :countFuture="countFuture"
+              :countOption="countOption"
+              :countEquity="countEquity"
+            />
+          </div>
+        </div>
+        <br />
+        <div class="header-style">
           Here's a breakdown of your followed portfolio
         </div>
-<br>
-<br>
-<br>
+        <br />
+        <br />
+        <br />
         <div>
           <div v-if="assets" style="text-align:left;">
             <h2><b>Assets</b></h2>
@@ -42,7 +47,17 @@
               class="elevation-1"
             >
             </v-data-table>
-            <v-btn @click="deleteSelected">Delete</v-btn>
+            <div class="button-style">
+              <v-btn
+                @click="deleteSelected"
+                class="justify-center white--text"
+                color="#651FFF"
+                min-width="300"
+                min-height="50"
+                x-large
+                >Delete
+              </v-btn>
+            </div>
           </div>
         </div>
       </v-card-text>
@@ -54,9 +69,9 @@
 
 <script>
 import ChartDoughnut from "@/components/chart-doughnut";
-import { getPortfolio, deletePortfolioAsset } from '../api';
-import { Auth } from 'aws-amplify';
-import { getCompanyData } from '../api'
+import { getPortfolio, deletePortfolioAsset } from "../api";
+import { Auth } from "aws-amplify";
+import { getCompanyData } from "../api";
 
 export default {
   data: () => ({
@@ -84,12 +99,12 @@ export default {
     countFuture: 0,
     countOption: 0,
     countEquity: 0,
-    countTotal:0
+    countTotal: 0,
   }),
   components: {
     ChartDoughnut,
   },
-mounted() {
+  mounted() {
     this.getUser();
     // this.getItems();
     // for (var i = 0; i < this.items.length; i++) {
@@ -100,12 +115,12 @@ mounted() {
   methods: {
     async getUser() {
       let user = await Auth.currentAuthenticatedUser();
-      this.username = user['username'];
+      this.username = user["username"];
       const data = {
         username: this.username,
-      }
+      };
       let userData = await getPortfolio(data);
-      this.tableItems = userData['portfolio'];
+      this.tableItems = userData["portfolio"];
 
       let lengthItems = Object.keys(this.tableItems).length;
 
@@ -188,33 +203,34 @@ mounted() {
 
         // console.log(resp);
 
-        if (Object.keys(resp).length === 0 || ("Note" in resp)) {
+        if (Object.keys(resp).length === 0 || "Note" in resp) {
           if (this.errorMsg == null) {
-            this.errorMsg = "Note: Due to the free tier API limitation, some stocks may not show values.";
+            this.errorMsg =
+              "Note: Due to the free tier API limitation, some stocks may not show values.";
           }
         } else {
-            if (resp["AssetType"] == "ETF") this.countEtf += 1
-            if (resp["AssetType"] == "Options") this.countOption += 1
-            if (resp["AssetType"] == "Futures") this.countFuture += 1
-            if (resp["AssetType"] == "Common Stock") this.countEquity += 1
-            if (resp["AssetType"] == "Bond") this.countBond += 1
-            this.countTotal += 1
-            
-            console.log(symbol);
+          if (resp["AssetType"] == "ETF") this.countEtf += 1;
+          if (resp["AssetType"] == "Options") this.countOption += 1;
+          if (resp["AssetType"] == "Futures") this.countFuture += 1;
+          if (resp["AssetType"] == "Common Stock") this.countEquity += 1;
+          if (resp["AssetType"] == "Bond") this.countBond += 1;
+          this.countTotal += 1;
 
-            this.tableContent.push({
-              symbol: resp["Symbol"],
-              name: resp["Name"],
-              type: resp["AssetType"],
-              "50DayMovingAverage": resp["50DayMovingAverage"],
-              "52WeekHigh": resp["52WeekHigh"],
-              "52WeekLow": resp["52WeekLow"],
-              DividendPerShare: resp["DividendPerShare"],
-              ProfitMargin: resp["ProfitMargin"],
-              cap: resp["MarketCapitalization"],
-              ratio: resp["PERatio"],
-            });
-        }        
+          console.log(symbol);
+
+          this.tableContent.push({
+            symbol: resp["Symbol"],
+            name: resp["Name"],
+            type: resp["AssetType"],
+            "50DayMovingAverage": resp["50DayMovingAverage"],
+            "52WeekHigh": resp["52WeekHigh"],
+            "52WeekLow": resp["52WeekLow"],
+            DividendPerShare: resp["DividendPerShare"],
+            ProfitMargin: resp["ProfitMargin"],
+            cap: resp["MarketCapitalization"],
+            ratio: resp["PERatio"],
+          });
+        }
       } catch (e) {
         console.error(e);
       }
@@ -235,20 +251,17 @@ mounted() {
         console.log(data);
         this.deletePortfolio(data);
         this.tableContent.splice(tableID, 1);
-
       }
-      
     },
 
     async deletePortfolio(data) {
       try {
         var resp = await deletePortfolioAsset(data);
-        console.log(resp)
-      } catch(e) {
-        console.log(e)
+        console.log(resp);
+      } catch (e) {
+        console.log(e);
       }
     },
-
   },
 };
 </script>
@@ -257,7 +270,7 @@ mounted() {
 .header-style {
   padding: 150 40 150 40;
   font-size: 2em;
-  color:blue;
+  color: blue;
 }
 
 .button-style {
