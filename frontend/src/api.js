@@ -1,6 +1,6 @@
 import axios from 'axios'
 
-const base_url = 'https://52.5.91.23:8000/app'
+const base_url = 'http://52.5.91.23:8000/app'
 //const base_url = 'http://readyplayerone-env.eba-w2pqpi4j.us-east-1.elasticbeanstalk.com/'
 
 export async function getTopGains() {
