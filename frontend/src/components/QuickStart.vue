@@ -292,8 +292,10 @@ export default {
       try {
         var resp = await addToPortfolio(data);
         console.log(resp)
+        alert('Successfully added to portfolio!')
       } catch(e) {
         console.log(e)
+        alert('Unable to add to portfolio, please rememeber to log in.')
       }
     },
 
