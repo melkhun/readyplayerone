@@ -80,7 +80,7 @@
               <div class="button-style">
                 <v-btn
                   class="justify-center white--text"
-                  color="rgb(0, 0, 255)"
+                  color="#651FFF"
                   min-width="300"
                   min-height="50"
                   x-large
@@ -135,12 +135,20 @@
             </template>
 
           </v-data-table>
-          <v-btn @click="addSelected">Add to Portfolio</v-btn>
-
+          <div class="button-style">
+            <v-btn 
+              @click="addSelected"
+              class="justify-center white--text"
+              color="#651FFF"
+              min-width="300"
+              min-height="50"
+              x-large
+            >Add to Portfolio</v-btn>
+          </div>
           <div class="button-style">
             <v-btn
               class="justify-center white--text"
-              color="rgb(0, 0, 255)"
+              color="blue-grey lighten-2"
               min-width="300"
               min-height="50"
               x-large
@@ -528,7 +536,7 @@ export default {
 
 <style scoped lang="scss">
 .button-style {
-  padding: 80px 50px 20px 50px;
+  padding: 30px 50px 0px 50px;
 }
 
 .block-card {

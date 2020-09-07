@@ -15,12 +15,26 @@
       <v-container flex colour="transparent" style="padding-bottom:30">
         <v-row flex class="justify-center">
           <v-col cols="12" md="4">
-            <v-btn min-width="260px" min-height="40px" rounded dark to="/calculator" medium color="#651FFF"
+            <v-btn
+              min-width="260px"
+              min-height="40px"
+              rounded
+              dark
+              medium
+              color="#651FFF"
+              @click="$router.push('calculator')"
               >Calculate Your Finances</v-btn
             >
           </v-col>
           <v-col cols="12" md="4">
-            <v-btn min-width="260px" min-height="40px" rounded dark to="/quickstart" medium color="#651FFF"
+            <v-btn
+              min-width="260px"
+              min-height="40px"
+              rounded
+              dark
+              medium
+              color="#651FFF"
+              @click="$router.push('quickstart')"
               >Start Investing
             </v-btn>
           </v-col>
@@ -42,7 +56,6 @@
     </kinesis-container>
 
     <!--NEWS SECTION-->
-    
 
     <v-card color="#651FFF" dark flat tile>
       <div class="market-news">Latest Market News</div>
@@ -125,7 +138,6 @@ export default {
 </script>
 
 <style scoped>
-
 .circle {
   position: absolute;
   border-radius: 100%;
@@ -193,10 +205,10 @@ img {
 
 .market-news {
   font-size: 2.5rem;
-  font-weight:700;
+  font-weight: 700;
   line-height: 2.5rem;
-  padding-top:0.7em;
-  padding-bottom:0.5em;
+  padding-top: 0.7em;
+  padding-bottom: 0.5em;
 }
 .link-style {
   display: block;
