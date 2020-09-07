@@ -22,7 +22,7 @@
         "s3TemplateURL": "https://s3.amazonaws.com/amplify-readyplayerone-dev-95538-deployment/amplify-cfn-templates/auth/readyplayeroneedbc155a-cloudformation-template.yml",
         "logicalId": "authreadyplayeroneedbc155a"
       },
-      "lastPushTimeStamp": "2020-09-06T17:03:23.826Z",
+      "lastPushTimeStamp": "2020-09-07T03:19:51.775Z",
       "output": {
         "AppClientSecret": "tsipfdfvlarlmnseat2880apntek56huag04bmhplji9i91tqon",
         "UserPoolId": "us-east-1_EjgZJJPNS",
@@ -33,6 +33,20 @@
         "UserPoolName": "readyplayeroneedbc155a_userpool_edbc155a"
       },
       "lastPushDirHash": "lAbSHqB1pxWRtJVjNm4snaIhsas="
+    }
+  },
+  "hosting": {
+    "amplifyhosting": {
+      "service": "amplifyhosting",
+      "providerPlugin": "awscloudformation",
+      "type": "manual",
+      "providerMetadata": {
+        "s3TemplateURL": "https://s3.amazonaws.com/amplify-readyplayerone-dev-95538-deployment/amplify-cfn-templates/hosting/amplifyhosting-template.json",
+        "logicalId": "hostingamplifyhosting"
+      },
+      "lastPushTimeStamp": "2020-09-07T03:19:51.836Z",
+      "output": {},
+      "lastPushDirHash": "/+VZ33seFFqAr6wbtptwbINUfSA="
     }
   }
 }
