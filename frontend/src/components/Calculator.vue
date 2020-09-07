@@ -48,6 +48,7 @@
             <div class="profile-text">Your total monthly income</div>
             <v-text-field
               v-model="income"
+              type="number"
               class="input-field"
               color="rgb(172, 193, 252)"
               label="Your total monthly income"
@@ -57,6 +58,7 @@
             <div class="profile-text">Your monthly expense</div>
             <v-text-field
               v-model="expense"
+              type="number"
               class="input-field"
               color="rgb(172, 193, 252)"
               label="Your total monthly expense"
@@ -99,6 +101,7 @@
                   <v-text-field
                     v-model="cash"
                     class="input-field"
+                    type="number"
                     color="rgb(172, 193, 252)"
                     required
                     regular
@@ -107,6 +110,7 @@
                   <v-text-field
                     v-model="cpf"
                     class="input-field"
+                    type="number"
                     color="rgb(172, 193, 252)"
                     required
                     regular
@@ -115,6 +119,7 @@
                   <v-text-field
                     v-model="lifeinsurance"
                     class="input-field"
+                    type="number"
                     color="rgb(172, 193, 252)"
                     required
                     regular
@@ -123,6 +128,7 @@
                   <v-text-field
                     v-model="investments"
                     class="input-field"
+                    type="number"
                     color="rgb(172, 193, 252)"
                     required
                     regular
@@ -139,6 +145,7 @@
                   <v-text-field
                     v-model="debt"
                     class="input-field"
+                    type="number"
                     color="rgb(172, 193, 252)"
                     required
                     regular
@@ -147,6 +154,7 @@
                   <v-text-field
                     v-model="bills"
                     class="input-field"
+                    type="number"
                     color="rgb(172, 193, 252)"
                     required
                     regular
